@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | VendRoam</title>
+  <link rel="stylesheet" href="assets/css/legal.css">
+</head>
+<body>
+  <main class="page-shell">
+    <a class="back-link" href="index.html">&larr; Back to VendRoam</a>
+    <article class="legal">
+      <h1>VendRoam Privacy Policy</h1>
+      <p class="meta">Effective: 13 August 2026 | Provider: Cunning Creek Studios</p>
+
+      <section>
+        <h2>What we collect</h2>
+        <h3>Location (vendor)</h3>
+        <p>While a vendor is working their shift, the app sends their precise device location to our servers so it can be shown live on a map to anyone following that vendor. This is a core, always-visible feature &mdash; a vendor&rsquo;s live location is public to their followers whenever they&rsquo;re on shift.</p>
+
+        <h3>Location (customer)</h3>
+        <p>While you have the app open, your device&rsquo;s location is sent to our servers so we can compare it against a followed vendor&rsquo;s live location and alert you when it&rsquo;s nearby &mdash; including sending you a notification even if the app is closed at that moment. Your location is stored privately per vendor you follow and is never shown to the vendor or to any other customer. It updates only when you follow a vendor, or when you tap &ldquo;Ping me here&rdquo; on that vendor&rsquo;s map screen &mdash; not continuously every time the app happens to be open.</p>
+
+        <h3>Personal info</h3>
+        <p>A vendor&rsquo;s contact phone number and email are public and shown to anyone following that vendor, since the app&rsquo;s purpose is letting customers reach the vendor. Separately, if a vendor records a customer&rsquo;s contact details against a private calendar/party booking, that information is stored privately and is never shown publicly or to any other customer.</p>
+
+        <h3>Photos</h3>
+        <p>Menu item photos a vendor uploads are stored on our servers and shown publicly on that vendor&rsquo;s page, as part of displaying their menu.</p>
+
+        <h3>Device identifier</h3>
+        <p>Each device is given an anonymous, randomly-generated ID (via Firebase Anonymous Authentication) with no personal profile attached. It exists solely so our servers can verify who owns a vendor, or which follower record belongs to your device &mdash; there is no login, username, or password anywhere in the app.</p>
+
+        <h3>Push notification token</h3>
+        <p>To deliver proximity notifications, your device&rsquo;s push-notification token (via Firebase Cloud Messaging) is stored with your private per-vendor follower record. It carries no personal profile, and is removed when you stop following that vendor or delete your data.</p>
+
+        <h3>Camera</h3>
+        <p>The camera is used only to scan a vendor&rsquo;s QR/barcode to follow it. No photo or video is captured, stored, or transmitted from this.</p>
+
+        <h3>Local storage</h3>
+        <p>The list of vendors you follow, and related local app state, lives on your device and is removed automatically if you uninstall the app.</p>
+      </section>
+
+      <section>
+        <h2>How we use it</h2>
+        <p>Solely to provide the app&rsquo;s core features: live vendor tracking, proximity notifications (including ones delivered while the app is closed), event and menu display, and the contact-the-vendor flow for bookings and enquiries.</p>
+        <p>We do not sell your information, use it for advertising, or share it with data brokers.</p>
+      </section>
+
+      <section>
+        <h2>Security</h2>
+        <p>All data is sent over encrypted connections (HTTPS/TLS) between the app and our servers.</p>
+      </section>
+
+      <section>
+        <h2>Third-party services</h2>
+        <p>Google Firebase (Cloud Firestore, Cloud Functions, Cloud Messaging, Anonymous Authentication, and Cloud Storage), the Google Maps SDK, and the Google Play Install Referrer API (used only to auto-suggest following a vendor right after installing from a scanned barcode link).</p>
+      </section>
+
+      <section>
+        <h2>Your controls</h2>
+        <p><strong>Customers:</strong> tap the delete icon next to any vendor in &ldquo;My Vendors&rdquo; to stop following it &mdash; this removes it from your device and deletes your private data associated with that vendor from our servers immediately, right in the app. To delete your data for every vendor you follow in one action, go to My Vendors &rarr; Settings &rarr; Danger Zone &rarr; &ldquo;Delete All My Data&rdquo;. No need to contact us either way. See also our <a href="delete-your-data.html">Delete your data</a> page.</p>
+        <p><strong>Vendors:</strong> open Settings &rarr; Edit &rarr; Danger Zone &rarr; &ldquo;Delete My Vendor&rdquo; to permanently delete your vendor and everything tied to it (menu, calendar, followers, photos, recovery code), right in the app. This cannot be undone and immediately removes the vendor for every customer following it.</p>
+        <p>If you need help with something the app&rsquo;s controls don&rsquo;t cover, contact <a href="mailto:cunningcreekstudios@protonmail.com">cunningcreekstudios@protonmail.com</a>.</p>
+      </section>
+
+      <section>
+        <h2>Changes to this policy</h2>
+        <p>We may update this policy as the app changes. Material changes will be reflected here with an updated effective date.</p>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

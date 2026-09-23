@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Follow this vendor on VendRoam</title>
+<meta name="description" content="A vendor on VendRoam wants you to follow them — live location, automatic pings, and updates, all in one free app.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#101319">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .follow-hero{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .follow-card{max-width:420px;text-align:center;}
+  .follow-card p.lede{margin-left:auto;margin-right:auto;}
+</style>
+</head>
+<body>
+
+<div class="follow-hero">
+  <div class="follow-card">
+    <a class="brand" href="/" style="justify-content:center;margin-bottom:28px;">
+      <span class="pin-mark">
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none">
+          <path d="M17 2C10.4 2 5 7.3 5 13.8 5 22.4 17 32 17 32s12-9.6 12-18.2C29 7.3 23.6 2 17 2Z" fill="url(#followPin)"/>
+          <circle cx="17" cy="13.5" r="4.6" fill="#101319"/>
+          <defs>
+            <linearGradient id="followPin" x1="5" y1="2" x2="29" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFB870"/>
+              <stop offset="1" stop-color="#D9711B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand-word">VendRoam</span>
+    </a>
+    <h1 style="font-size:clamp(26px,5vw,34px);">A vendor wants you to follow them.</h1>
+    <p class="lede" style="margin-top:16px;">A local vendor uses VendRoam to share their live location — get the app to see them on the map, get pinged when they're nearby, and never lose track of them again. Free, no account needed.</p>
+    <div class="hero-ctas" style="justify-content:center;margin-top:28px;">
+      <a class="play-badge" id="play-link" href="https://play.google.com/store/apps/details?id=com.vendroam.app">
+        <img src="../assets/img/play-badge.png" alt="Get it on Google Play">
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // The vendor id is the last path segment, e.g. /v/abc123 -> "abc123". Must produce the exact
+  // same referrer-tagged Play Store URL as the Android app's buildPlayStoreScanUrl (see
+  // app/src/main/java/com/vendroam/app/barcode/PlayStoreLink.kt) - that's what the app's
+  // install-referrer flow already reads to auto-follow this vendor on first open.
+  (function () {
+    var segments = window.location.pathname.split("/").filter(Boolean);
+    var vendorId = segments[segments.length - 1];
+    if (!vendorId || vendorId === "v" || vendorId === "index.html") return;
+    var referrer = encodeURIComponent("vendor_id=" + vendorId);
+    var url = "https://play.google.com/store/apps/details?id=com.vendroam.app&referrer=" + referrer;
+    document.getElementById("play-link").setAttribute("href", url);
+  })();
+</script>
+
+</body>
+</html>

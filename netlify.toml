@@ -1,0 +1,27 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/v/*"
+  to = "/v/index.html"
+  status = 200
+
+# assetlinks.json must be served at the literal /.well-known/ URL for Android App Links
+# verification (and any other Digital Asset Links check) to find it - but a browser-based
+# drag-and-drop deploy silently skips dot-prefixed folders as "hidden," so the real file lives in
+# the plain "wellknown" folder instead and gets rewritten (status 200, not a redirect) to the URL
+# it actually needs to be served at.
+[[redirects]]
+  from = "/.well-known/assetlinks.json"
+  to = "/wellknown/assetlinks.json"
+  status = 200
+
+[[headers]]
+  for = "/assets/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

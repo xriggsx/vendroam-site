@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VendRoam — Never lose a customer, wherever you roam</title>
+<meta name="description" content="VendRoam turns a single barcode scan into a customer for life. Live location, automatic proximity pings, and direct announcements for coffee vans, food trucks, mobile groomers, and any business that roams.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#101319">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="VendRoam — Never lose a customer, wherever you roam">
+<meta property="og:description" content="Scan once, follow for good. Live map, automatic proximity pings, and direct announcements for any mobile business.">
+<meta property="og:image" content="/assets/img/icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-row">
+    <a class="brand" href="#top">
+      <span class="pin-mark">
+        <svg width="26" height="26" viewBox="0 0 34 34" fill="none">
+          <path d="M17 2C10.4 2 5 7.3 5 13.8 5 22.4 17 32 17 32s12-9.6 12-18.2C29 7.3 23.6 2 17 2Z" fill="url(#navPin)"/>
+          <circle cx="17" cy="13.5" r="4.6" fill="#101319"/>
+          <defs>
+            <linearGradient id="navPin" x1="5" y1="2" x2="29" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFB870"/>
+              <stop offset="1" stop-color="#D9711B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand-word">VendRoam</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#vendors">For vendors</a>
+      <a href="#customers">For customers</a>
+      <a class="btn nav-cta" href="https://play.google.com/store/apps/details?id=com.vendroam.app">Get the app</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="marquee" aria-label="Built for coffee vans, food trucks, ice cream vans, mobile groomers, market stalls, and more">
+    <div class="marquee-track">
+      <span class="marquee-item">Coffee vans</span>
+      <span class="marquee-item">Food trucks</span>
+      <span class="marquee-item">Ice cream vans</span>
+      <span class="marquee-item">Mobile groomers</span>
+      <span class="marquee-item">Market stalls</span>
+      <span class="marquee-item">Flower stalls</span>
+      <span class="marquee-item">Mobile bars</span>
+      <span class="marquee-item">Food carts</span>
+      <span class="marquee-item">Dessert vans</span>
+      <span class="marquee-item">Mobile detailers</span>
+      <span class="marquee-item">Pop-up shops</span>
+      <span class="marquee-item">Anyone who roams</span>
+      <span class="marquee-item" aria-hidden="true">Coffee vans</span>
+      <span class="marquee-item" aria-hidden="true">Food trucks</span>
+      <span class="marquee-item" aria-hidden="true">Ice cream vans</span>
+      <span class="marquee-item" aria-hidden="true">Mobile groomers</span>
+      <span class="marquee-item" aria-hidden="true">Market stalls</span>
+      <span class="marquee-item" aria-hidden="true">Flower stalls</span>
+      <span class="marquee-item" aria-hidden="true">Mobile bars</span>
+      <span class="marquee-item" aria-hidden="true">Food carts</span>
+      <span class="marquee-item" aria-hidden="true">Dessert vans</span>
+      <span class="marquee-item" aria-hidden="true">Mobile detailers</span>
+      <span class="marquee-item" aria-hidden="true">Pop-up shops</span>
+      <span class="marquee-item" aria-hidden="true">Anyone who roams</span>
+    </div>
+  </div>
+  <div class="container hero-solo">
+    <h1>The chase is over.<br>Now they follow you.</h1>
+    <p class="lede" style="margin:20px auto 0;">VendRoam turns a single barcode scan into a customer for life. Live location, automatic proximity pings, and direct announcements — a following that travels with your business, wherever you set up next.</p>
+    <div class="hero-ctas" style="justify-content:center;">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.vendroam.app">
+        <img src="assets/img/play-badge.png" alt="Get it on Google Play">
+      </a>
+      <div class="qr-frame" title="Scan to get VendRoam on Google Play">
+        <div id="hero-qr"></div>
+      </div>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="container">
+    <p class="eyebrow">How it works</p>
+    <h2 style="font-size:clamp(28px,3.6vw,38px);">One scan. A customer for life.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>They scan your code</h3>
+        <p>One tap of their camera — no account, no sign-up, no app-store detour on your end. It costs you nothing to set up.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>They're yours for good</h3>
+        <p>Your live map, menu, events, and contact details stay current automatically — a following you keep, with nothing to maintain by hand.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>They get pinged, and show up</h3>
+        <p>The moment you're nearby, a notification fires on their phone automatically. Foot traffic without you lifting a finger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="split-head">
+      <p class="eyebrow">Why not just Facebook or Instagram?</p>
+      <h2 style="font-size:clamp(28px,3.6vw,38px);">A post is hope. A ping is certain.</h2>
+    </div>
+    <div class="split">
+      <div class="audience-card compare-bad">
+        <span class="tag">Facebook &amp; Instagram</span>
+        <h3>You post. They might see it.</h3>
+        <ul>
+          <li><span class="cross">✕</span><span>An algorithm decides who actually sees your post — most of your followers never will.</span></li>
+          <li><span class="cross">✕</span><span>You have to remember to post it, every single time you go out.</span></li>
+          <li><span class="cross">✕</span><span>Customers have to be scrolling at exactly the right moment, or they miss it.</span></li>
+          <li><span class="cross">✕</span><span>No way to know who's actually nearby you right now.</span></li>
+        </ul>
+      </div>
+      <div class="audience-card compare-good">
+        <span class="tag">VendRoam</span>
+        <h3>You show up. They already know.</h3>
+        <ul>
+          <li><span class="check">✓</span><span>Every follower gets notified — no algorithm decides who sees it.</span></li>
+          <li><span class="check">✓</span><span>Nothing to remember to post — your live location updates itself the moment you're on shift.</span></li>
+          <li><span class="check">✓</span><span>A ping fires the instant someone's nearby — they don't need to be looking at their phone.</span></li>
+          <li><span class="check">✓</span><span>Built specifically for &ldquo;find me right now,&rdquo; not just general updates.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vendors" style="padding-top:0;">
+  <div class="container">
+    <div class="split-head">
+      <p class="eyebrow">What you get, then what they get</p>
+      <h2 style="font-size:clamp(28px,3.6vw,38px);">Built for your business first — and customers actually want to use it.</h2>
+    </div>
+    <div class="split">
+      <div class="audience-card vendor">
+        <span class="tag">For your business</span>
+        <h3>Own the relationship.</h3>
+        <ul>
+          <li><span class="check">✓</span><span><b>Turn foot traffic into a following</b> — one scan and a customer is yours for good, with zero admin.</span></li>
+          <li><span class="check">✓</span><span><b>Automatic proximity pings</b> — customers get notified when you're near, without you lifting a finger.</span></li>
+          <li><span class="check">✓</span><span><b>Send Announcement, on demand</b> — flash deals, new items, extra hours, straight to every follower instantly.</span></li>
+          <li><span class="check">✓</span><span><b>A real digital storefront</b> — menu, photos, pricing, sold-out flags — no separate website needed.</span></li>
+          <li><span class="check">✓</span><span><b>Bookings without booking fees</b> — a calendar that opens a call or email, no commission taken.</span></li>
+          <li><span class="check">✓</span><span><b>Own it forever</b> — a recovery code protects you, and if you lose that too, your email gets you back in.</span></li>
+          <li><span class="check">✓</span><span><b>No customer-data liability</b> — you get reach and proximity, never a list of tracked customer locations to be responsible for.</span></li>
+          <li><span class="check">✓</span><span><b>Try before you subscribe</b> — setup, menu, and barcode are free; the subscription only gates going live.</span></li>
+          <li><span class="check">✓</span><span><b>Pays for itself fast</b> — at $7.99/month, it only takes a couple of extra regulars a week to come out ahead.</span></li>
+          <li><span class="check">✓</span><span><b>Free word-of-mouth growth</b> — your followers can share you with a friend in one tap, no marketing spend needed.</span></li>
+        </ul>
+      </div>
+      <div class="audience-card customer" id="customers">
+        <span class="tag">What customers get — why they'll actually use it</span>
+        <h3>Completely free. Always.</h3>
+        <ul>
+          <li><span class="check">✓</span><span><b>No account, ever</b> — scan a barcode, and that's it.</span></li>
+          <li><span class="check">✓</span><span><b>Never lose track</b> of a vendor you love, no matter where they set up next.</span></li>
+          <li><span class="check">✓</span><span><b>Notified automatically</b> when a followed vendor is nearby — no need to keep checking.</span></li>
+          <li><span class="check">✓</span><span><b>See the menu and pricing</b> before you arrive, so you already know what to order.</span></li>
+          <li><span class="check">✓</span><span><b>Direct contact details</b> for bookings and events, no middleman.</span></li>
+          <li><span class="check">✓</span><span><b>Your location is never shared</b> with anyone — not the vendor, not other customers.</span></li>
+          <li><span class="check">✓</span><span><b>Follow unlimited vendors</b> of any kind, all in one app.</span></li>
+          <li><span class="check">✓</span><span><b>Share a vendor with a friend</b> in one tap — they don't even need the app yet to get the link.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="eyebrow">See it in action</p>
+    <h2 style="font-size:clamp(28px,3.6vw,38px);">The live map and the storefront.</h2>
+    <div class="shots">
+      <div class="shot">
+        <img src="assets/img/screenshot-map.jpg" alt="VendRoam live map showing a followed vendor's real-time location">
+        <p class="shot-caption">Live location while they're working — never stale, never guessed.</p>
+      </div>
+      <div class="shot">
+        <img src="assets/img/screenshot-menu.jpg" alt="VendRoam vendor menu with photos, pricing, and sold-out flags">
+        <p class="shot-caption">A real menu — photos, pricing, sold-out flags — before you even arrive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="text-align:center;">
+    <p class="eyebrow">One app, any business</p>
+    <h2 style="font-size:clamp(26px,3.2vw,34px);">Built for anyone who roams.</h2>
+    <div class="types-row">
+      <span class="type-pill"><span class="glyph">☕</span>Coffee</span>
+      <span class="type-pill"><span class="glyph">🌮</span>Food</span>
+      <span class="type-pill"><span class="glyph">🍦</span>Ice Cream</span>
+      <span class="type-pill"><span class="glyph">🐕</span>Grooming</span>
+      <span class="type-pill"><span class="glyph">🛍️</span>Market Stall</span>
+      <span class="type-pill"><span class="glyph">⭐</span>Anything else</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Never lose a customer to bad timing again.</h2>
+    <p class="lede">Free for customers, forever. A 7-day free trial for vendors — set up your storefront before you ever pay a cent.</p>
+    <div class="hero-ctas">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.vendroam.app">
+        <img src="assets/img/play-badge.png" alt="Get it on Google Play">
+      </a>
+      <div class="qr-frame" title="Scan to get VendRoam on Google Play">
+        <div id="cta-qr"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <a class="brand" href="#top">
+        <span class="pin-mark">
+          <svg width="20" height="20" viewBox="0 0 34 34" fill="none">
+            <path d="M17 2C10.4 2 5 7.3 5 13.8 5 22.4 17 32 17 32s12-9.6 12-18.2C29 7.3 23.6 2 17 2Z" fill="url(#footPin)"/>
+            <circle cx="17" cy="13.5" r="4.6" fill="#101319"/>
+            <defs>
+              <linearGradient id="footPin" x1="5" y1="2" x2="29" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFB870"/>
+                <stop offset="1" stop-color="#D9711B"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand-word" style="font-size:18px;">VendRoam</span>
+      </a>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="delete-your-data.html">Delete your data</a>
+        <a href="mailto:cunningcreekstudios@protonmail.com">Contact</a>
+      </div>
+    </div>
+    <p class="footer-note">© 2026 Cunning Creek Studios. VendRoam and the VendRoam logo are trademarks of Cunning Creek Studios.</p>
+  </div>
+</footer>
+
+<script>
+  var playStoreUrl = "https://play.google.com/store/apps/details?id=com.vendroam.app";
+  ["hero-qr", "cta-qr"].forEach(function(id){
+    new QRCode(document.getElementById(id), {
+      text: playStoreUrl,
+      width: 54,
+      height: 54,
+      colorDark: "#1B1F26",
+      colorLight: "#EFE9DC",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  });
+</script>
+</body>
+</html>

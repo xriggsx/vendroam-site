@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vendroam.app",
+      "sha256_cert_fingerprints": [
+        "B2:55:1B:90:85:51:71:24:B8:9B:42:D1:6A:1F:BC:6F:79:40:3D:64:B4:C8:35:9D:8D:00:93:70:49:AD:37:9A"
+      ]
+    }
+  }
+]
