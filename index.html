@@ -7,7 +7,7 @@
 <meta name="description" content="VendRoam turns a single barcode scan into a customer for life. Live location, automatic proximity pings, and direct announcements for coffee vans, food trucks, mobile groomers, and any business that roams.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<meta name="theme-color" content="#101319">
+<meta name="theme-color" content="#0A0705">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="VendRoam — Never lose a customer, wherever you roam">
@@ -15,9 +15,11 @@
 <meta property="og:image" content="/assets/img/icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- EXPERIMENT: Tailwind CDN, scoped to the bento grid section below only. Remove before merging to main if we keep the rest of the site on the existing hand-written CSS. -->
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
@@ -39,9 +41,7 @@
       <span class="brand-word">VendRoam</span>
     </a>
     <div class="nav-links">
-      <a href="#how">How it works</a>
       <a href="#vendors">For vendors</a>
-      <a href="#customers">For customers</a>
       <a class="btn nav-cta" href="https://play.google.com/store/apps/details?id=com.vendroam.app">Get the app</a>
     </div>
   </div>
@@ -54,7 +54,7 @@
       <span class="marquee-item">Food trucks</span>
       <span class="marquee-item">Ice cream vans</span>
       <span class="marquee-item">Mobile groomers</span>
-      <span class="marquee-item">Market stalls</span>
+      <span class="marquee-item">Market Stall</span>
       <span class="marquee-item">Flower stalls</span>
       <span class="marquee-item">Mobile bars</span>
       <span class="marquee-item">Food carts</span>
@@ -66,7 +66,7 @@
       <span class="marquee-item" aria-hidden="true">Food trucks</span>
       <span class="marquee-item" aria-hidden="true">Ice cream vans</span>
       <span class="marquee-item" aria-hidden="true">Mobile groomers</span>
-      <span class="marquee-item" aria-hidden="true">Market stalls</span>
+      <span class="marquee-item" aria-hidden="true">Market Stall</span>
       <span class="marquee-item" aria-hidden="true">Flower stalls</span>
       <span class="marquee-item" aria-hidden="true">Mobile bars</span>
       <span class="marquee-item" aria-hidden="true">Food carts</span>
@@ -77,8 +77,14 @@
     </div>
   </div>
   <div class="container hero-solo">
-    <h1>The chase is over.<br>Now they follow you.</h1>
-    <p class="lede" style="margin:20px auto 0;">VendRoam turns a single barcode scan into a customer for life. Live location, automatic proximity pings, and direct announcements — a following that travels with your business, wherever you set up next.</p>
+    <span class="kicker-badge">🔥 7-day free trial for vendors</span>
+    <h1>The chase is over.<br>Now <span class="grad-text">they follow you.</span></h1>
+    <p class="lede" style="margin:20px auto 0;">One barcode scan turns a walk-up into a customer for life — no commission, no middleman, no customer list VendRoam holds over you. It's your following, it travels with you, and it's yours to keep.</p>
+    <div class="trust-row">
+      <span class="trust-chip">💯 You keep 100% — zero commission, ever</span>
+      <span class="trust-chip">🔐 We never see a list of your customers' locations</span>
+      <span class="trust-chip">❌ Cancel anytime — no lock-in contract</span>
+    </div>
     <div class="hero-ctas" style="justify-content:center;">
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.vendroam.app">
         <img src="assets/img/play-badge.png" alt="Get it on Google Play">
@@ -86,7 +92,6 @@
       <div class="qr-frame" title="Scan to get VendRoam on Google Play">
         <div id="hero-qr"></div>
       </div>
-      <a class="btn btn-ghost" href="#how">See how it works</a>
     </div>
   </div>
 </header>
@@ -146,60 +151,109 @@
   </div>
 </section>
 
-<section id="vendors" style="padding-top:0;">
-  <div class="container">
-    <div class="split-head">
-      <p class="eyebrow">What you get, then what they get</p>
-      <h2 style="font-size:clamp(28px,3.6vw,38px);">Built for your business first — and customers actually want to use it.</h2>
+<section id="vendors" style="padding:96px 0;font-family:'Inter',system-ui,sans-serif;background:radial-gradient(60% 60% at 50% 0%, rgba(255,122,41,0.10), transparent 70%), #0A0705;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-widest text-[#FFB25C] mb-3">What you get, then what they get</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-[#FBEEDF]">Built for your business first — and customers actually want to use it.</h2>
     </div>
-    <div class="split">
-      <div class="audience-card vendor">
-        <span class="tag">For your business</span>
-        <h3>Own the relationship.</h3>
-        <ul>
-          <li><span class="check">✓</span><span><b>Turn foot traffic into a following</b> — one scan and a customer is yours for good, with zero admin.</span></li>
-          <li><span class="check">✓</span><span><b>Automatic proximity pings</b> — customers get notified when you're near, without you lifting a finger.</span></li>
-          <li><span class="check">✓</span><span><b>Send Announcement, on demand</b> — flash deals, new items, extra hours, straight to every follower instantly.</span></li>
-          <li><span class="check">✓</span><span><b>A real digital storefront</b> — menu, photos, pricing, sold-out flags — no separate website needed.</span></li>
-          <li><span class="check">✓</span><span><b>Bookings without booking fees</b> — a calendar that opens a call or email, no commission taken.</span></li>
-          <li><span class="check">✓</span><span><b>Own it forever</b> — a recovery code protects you, and if you lose that too, your email gets you back in.</span></li>
-          <li><span class="check">✓</span><span><b>No customer-data liability</b> — you get reach and proximity, never a list of tracked customer locations to be responsible for.</span></li>
-          <li><span class="check">✓</span><span><b>Try before you subscribe</b> — setup, menu, and barcode are free; the subscription only gates going live.</span></li>
-          <li><span class="check">✓</span><span><b>Pays for itself fast</b> — at $7.99/month, it only takes a couple of extra regulars a week to come out ahead.</span></li>
-          <li><span class="check">✓</span><span><b>Free word-of-mouth growth</b> — your followers can share you with a friend in one tap, no marketing spend needed.</span></li>
-        </ul>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Card 1: Primary Engine -->
+      <div class="md:col-span-2 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Vendor</p>
+            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">📡 Automatic Proximity Pings</h3>
+            <p class="text-[#C2A88F] text-sm leading-relaxed">Your live map updates the instant your shift starts — zero admin, zero manual posting.</p>
+          </div>
+          <div class="sm:border-l sm:border-[#3a2415] sm:pl-8">
+            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Customer</p>
+            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">📱 Zero Account Friction</h3>
+            <p class="text-[#C2A88F] text-sm leading-relaxed">Just scan a barcode. No app-store detour, no login, no account — ever.</p>
+          </div>
+        </div>
       </div>
-      <div class="audience-card customer" id="customers">
-        <span class="tag">What customers get — why they'll actually use it</span>
-        <h3>Completely free. Always.</h3>
-        <ul>
-          <li><span class="check">✓</span><span><b>No account, ever</b> — scan a barcode, and that's it.</span></li>
-          <li><span class="check">✓</span><span><b>Never lose track</b> of a vendor you love, no matter where they set up next.</span></li>
-          <li><span class="check">✓</span><span><b>Notified automatically</b> when a followed vendor is nearby — no need to keep checking.</span></li>
-          <li><span class="check">✓</span><span><b>See the menu and pricing</b> before you arrive, so you already know what to order.</span></li>
-          <li><span class="check">✓</span><span><b>Direct contact details</b> for bookings and events, no middleman.</span></li>
-          <li><span class="check">✓</span><span><b>Your location is never shared</b> with anyone — not the vendor, not other customers.</span></li>
-          <li><span class="check">✓</span><span><b>Follow unlimited vendors</b> of any kind, all in one app.</span></li>
-          <li><span class="check">✓</span><span><b>Share a vendor with a friend</b> in one tap — they don't even need the app yet to get the link.</span></li>
-        </ul>
+
+      <!-- Card 2: Pricing, high-contrast accent -->
+      <div class="md:col-span-1 bg-gradient-to-br from-[#FF7A29] to-[#C2410A] border border-[#FF9B45] rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_20px_50px_-16px_rgba(255,122,41,0.7)]">
+        <p class="font-mono text-xs uppercase tracking-widest text-[#1A0C02]/70 mb-4">Pricing</p>
+        <div>
+          <p class="text-3xl md:text-4xl font-extrabold tracking-tight text-[#1A0C02] mb-3 leading-tight">Less than a coffee a week.</p>
+          <h3 class="text-lg font-bold tracking-tight text-[#1A0C02] mb-2">Pays for itself instantly</h3>
+          <p class="text-[#1A0C02]/70 text-sm leading-relaxed">Recoup your software investment with just two extra regulars visiting your truck this week. Exact price shown in Google Play for your country.</p>
+        </div>
       </div>
+
+      <!-- Card 3: Operations -->
+      <div class="md:col-span-2 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Vendor</p>
+            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🏪 Dynamic Menu Control</h3>
+            <p class="text-[#C2A88F] text-sm leading-relaxed">Live price adjustments and &ldquo;Sold Out&rdquo; toggles, updated in real time.</p>
+          </div>
+          <div class="sm:border-l sm:border-[#3a2415] sm:pl-8">
+            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Customer</p>
+            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🍔 Clear Decision Making</h3>
+            <p class="text-[#C2A88F] text-sm leading-relaxed">Know what's left before you wait in line — cutting queue times for everyone.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Safety -->
+      <div class="md:col-span-1 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
+        <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Safety</p>
+        <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🔒 Zero Data Liability</h3>
+        <p class="text-[#C2A88F] text-sm leading-relaxed">Vendor metrics stay safe. Customer locations are never tracked or logged.</p>
+      </div>
+
+      <!-- Card 5: Viral Growth -->
+      <div class="md:col-span-2 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Vendor</p>
+            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🗣️ Viral Loop Referrals</h3>
+            <p class="text-[#C2A88F] text-sm leading-relaxed">Turn your existing regulars into a passive marketing team.</p>
+          </div>
+          <div class="sm:border-l sm:border-[#3a2415] sm:pl-8">
+            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Customer</p>
+            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🔗 One-Tap Live Link</h3>
+            <p class="text-[#C2A88F] text-sm leading-relaxed">Share precise coordinates and menus with a friend via a single standard web link.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: De-risking -->
+      <div class="md:col-span-1 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
+        <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">De-risking</p>
+        <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🎁 Try Before Going Live</h3>
+        <p class="text-[#C2A88F] text-sm leading-relaxed">Setting up your profile, testing barcodes, and building your menu is 100% free. You only pay when you go live on a route.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section>
+<section id="tour">
   <div class="container">
     <p class="eyebrow">See it in action</p>
-    <h2 style="font-size:clamp(28px,3.6vw,38px);">The live map and the storefront.</h2>
-    <div class="shots">
-      <div class="shot">
-        <img src="assets/img/screenshot-map.jpg" alt="VendRoam live map showing a followed vendor's real-time location">
-        <p class="shot-caption">Live location while they're working — never stale, never guessed.</p>
+    <h2 style="font-size:clamp(28px,3.6vw,38px);">From empty storefront to live in minutes — then what customers see.</h2>
+    <div class="tour-slideshow" id="tour-slideshow" tabindex="0">
+      <div class="tour-stage">
+        <button class="tour-nav tour-prev" id="tour-prev" aria-label="Previous screen" type="button">&#8249;</button>
+        <div class="tour-frame">
+          <img id="tour-img" src="assets/img/tour/01-vendor-setup.png" alt="">
+        </div>
+        <button class="tour-nav tour-next" id="tour-next" aria-label="Next screen" type="button">&#8250;</button>
       </div>
-      <div class="shot">
-        <img src="assets/img/screenshot-menu.jpg" alt="VendRoam vendor menu with photos, pricing, and sold-out flags">
-        <p class="shot-caption">A real menu — photos, pricing, sold-out flags — before you even arrive.</p>
+      <div class="tour-meta">
+        <span class="tour-badge vendor" id="tour-badge">Vendor</span>
+        <p class="tour-caption" id="tour-caption"></p>
+        <p class="tour-counter"><span id="tour-index">1</span> / <span id="tour-total">13</span></p>
       </div>
+      <div class="tour-dots" id="tour-dots"></div>
     </div>
   </div>
 </section>
@@ -219,9 +273,30 @@
   </div>
 </section>
 
+<section>
+  <div class="container">
+    <p class="eyebrow">Why vendors switch</p>
+    <h2 style="font-size:clamp(28px,3.6vw,38px);">Low risk, fast payback.</h2>
+    <div class="stat-strip">
+      <div class="stat-tile">
+        <div class="stat-num">☕ 1 coffee</div>
+        <div class="stat-label">Roughly what VendRoam costs per week — exact price shown in Google Play for your country.</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">7 days</div>
+        <div class="stat-label">Free trial. Set up your storefront and test it before you pay a cent.</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Cost to build your menu, generate your barcode, and get discovered.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-band">
   <div class="container">
-    <h2>Never lose a customer to bad timing again.</h2>
+    <h2>Never lose a <span class="grad-text">customer</span> to bad timing again.</h2>
     <p class="lede">Free for customers, forever. A 7-day free trial for vendors — set up your storefront before you ever pay a cent.</p>
     <div class="hero-ctas">
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.vendroam.app">
@@ -268,13 +343,65 @@
   ["hero-qr", "cta-qr"].forEach(function(id){
     new QRCode(document.getElementById(id), {
       text: playStoreUrl,
-      width: 54,
-      height: 54,
-      colorDark: "#1B1F26",
-      colorLight: "#EFE9DC",
+      width: 76,
+      height: 76,
+      colorDark: "#241407",
+      colorLight: "#F5E6D2",
       correctLevel: QRCode.CorrectLevel.M
     });
   });
+
+  var tourSlides = [
+    { src: "assets/img/tour/01-vendor-setup.png", badge: "Vendor", caption: "Set up your storefront — business type, map pin, contact info. Free to start." },
+    { src: "assets/img/tour/02-vendor-menu-coffee.png", badge: "Vendor", caption: "Build your full menu — photos and pricing, every category." },
+    { src: "assets/img/tour/05-vendor-menu-bakery.png", badge: "Vendor", caption: "Update it anytime — add items, change prices, mark things sold out." },
+    { src: "assets/img/tour/07-vendor-start-shift.png", badge: "Vendor", caption: "Go live in one tap. Every follower gets notified automatically." },
+    { src: "assets/img/tour/08-vendor-booking.png", badge: "Vendor", caption: "Manage private bookings and events from your calendar." },
+    { src: "assets/img/tour/09-customer-map.png", badge: "Customer", caption: "Customers see you live the moment you're on shift." },
+    { src: "assets/img/tour/10-customer-fullmenu.jpg", badge: "Customer", caption: "They browse your full menu, organized by category." },
+    { src: "assets/img/tour/11-customer-bakery-menu.jpg", badge: "Customer", caption: "Real photos and pricing before they even arrive." },
+    { src: "assets/img/tour/12-customer-item-espresso.jpg", badge: "Customer", caption: "Tap any item for the full detail — no surprises." },
+    { src: "assets/img/tour/13-customer-item-banana.jpg", badge: "Customer", caption: "Every item, priced and described clearly." }
+  ];
+  var tourIndex = 0;
+  var tourImg = document.getElementById("tour-img");
+  var tourBadge = document.getElementById("tour-badge");
+  var tourCaption = document.getElementById("tour-caption");
+  var tourIndexEl = document.getElementById("tour-index");
+  var tourDotsWrap = document.getElementById("tour-dots");
+  document.getElementById("tour-total").textContent = tourSlides.length;
+
+  tourSlides.forEach(function(s, i){
+    var dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "tour-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", "Go to screen " + (i + 1) + " of " + tourSlides.length);
+    dot.addEventListener("click", function(){ tourIndex = i; renderTour(); });
+    tourDotsWrap.appendChild(dot);
+  });
+
+  function renderTour(){
+    var s = tourSlides[tourIndex];
+    tourImg.src = s.src;
+    tourImg.alt = s.badge + " view: " + s.caption;
+    tourBadge.textContent = s.badge;
+    tourBadge.className = "tour-badge " + s.badge.toLowerCase();
+    tourCaption.textContent = s.caption;
+    tourIndexEl.textContent = tourIndex + 1;
+    var dots = tourDotsWrap.querySelectorAll(".tour-dot");
+    dots.forEach(function(d, i){ d.classList.toggle("active", i === tourIndex); });
+  }
+  function tourGo(delta){
+    tourIndex = (tourIndex + delta + tourSlides.length) % tourSlides.length;
+    renderTour();
+  }
+  document.getElementById("tour-prev").addEventListener("click", function(){ tourGo(-1); });
+  document.getElementById("tour-next").addEventListener("click", function(){ tourGo(1); });
+  document.getElementById("tour-slideshow").addEventListener("keydown", function(e){
+    if (e.key === "ArrowLeft") tourGo(-1);
+    if (e.key === "ArrowRight") tourGo(1);
+  });
+  renderTour();
 </script>
 </body>
 </html>
