@@ -118,7 +118,7 @@ h1,h2,h3{
 
 /* ---- hero ---- */
 .hero{
-  padding-bottom:108px;
+  padding-bottom:56px;
   position:relative;
   background:
     radial-gradient(60% 50% at 50% 0%, rgba(255,122,41,0.24), transparent 70%),
