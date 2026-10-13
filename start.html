@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Started with VendRoam</title>
+<meta name="description" content="Set up VendRoam in about 15 minutes, make your counter sign, and claim 3 months free as one of our first 10 founding vendors.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0705">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Get started with VendRoam: 3 months free for founding vendors">
+<meta property="og:description" content="Set up in about 15 minutes, print your counter sign, and claim 3 months free.">
+<meta property="og:image" content="/assets/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .start-hero{padding:64px 0 40px;text-align:center;}
+  .start-hero h1{font-size:clamp(40px,6vw,68px);}
+  .start-hero .lede{margin:18px auto 0;}
+  .offer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:32px;}
+  .offer div{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px;text-align:left;}
+  .offer b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:26px;font-weight:800;color:var(--accent-2);line-height:1.05;margin-bottom:6px;}
+  .offer span{font-size:14.5px;color:var(--ink-dim);line-height:1.5;}
+
+  .gs-section{padding:48px 0;}
+  .gs-section h2{font-size:clamp(30px,4vw,42px);margin-bottom:28px;}
+  .gs-steps{list-style:none;margin:0;padding:0;display:grid;gap:16px;counter-reset:step;}
+  .gs-step{display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;background:var(--panel-2);border:1px solid var(--line);border-radius:20px;padding:22px;}
+  .gs-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent) 60%,var(--accent-deep));color:#1A0C02;display:grid;place-items:center;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:26px;}
+  .gs-step h3{font-size:26px;margin-bottom:8px;}
+  .gs-step p{margin:0;color:var(--ink-dim);line-height:1.6;max-width:62ch;}
+  .gs-step ul{margin:10px 0 0;padding-left:20px;color:var(--ink-dim);line-height:1.7;}
+  .gs-step ul b{color:var(--ink);}
+  .gs-step .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+  .time{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-left:8px;vertical-align:middle;}
+
+  .claim{padding:48px 0 80px;}
+  .claim-box{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:32px;display:grid;gap:18px;}
+  .claim-box h2{font-size:clamp(30px,4vw,42px);}
+  .claim-box p{margin:0;color:var(--ink-dim);line-height:1.6;max-width:64ch;}
+  .claim-box ul{margin:0;padding-left:20px;color:var(--ink-dim);line-height:1.7;}
+  .email-claim{display:grid;gap:12px;background:var(--panel-2);border:1px dashed var(--line);border-radius:16px;padding:20px;}
+  .email-claim code{font-family:inherit;font-weight:700;color:var(--ink);background:rgba(255,150,70,.08);padding:2px 8px;border-radius:6px;overflow-wrap:anywhere;}
+  .small{font-size:13.5px;}
+
+  @media (max-width:760px){
+    .offer{grid-template-columns:1fr;}
+    .gs-step{grid-template-columns:1fr;gap:12px;}
+    .claim-box{padding:22px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-row">
+    <a class="brand" href="./">
+      <span class="pin-mark">
+        <svg width="26" height="26" viewBox="0 0 34 34" fill="none">
+          <path d="M17 2C10.4 2 5 7.3 5 13.8 5 22.4 17 32 17 32s12-9.6 12-18.2C29 7.3 23.6 2 17 2Z" fill="url(#navPin)"/>
+          <circle cx="17" cy="13.5" r="4.6" fill="#101319"/>
+          <defs>
+            <linearGradient id="navPin" x1="5" y1="2" x2="29" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFB870"/>
+              <stop offset="1" stop-color="#D9711B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand-word">VendRoam</span>
+    </a>
+    <div class="nav-links">
+      <a href="sign.html">Counter sign</a>
+      <a class="btn nav-cta" href="https://play.google.com/store/apps/details?id=com.vendroam.app">Get the app</a>
+    </div>
+  </div>
+</nav>
+
+<header class="start-hero">
+  <div class="container">
+    <span class="kicker-badge">Founding vendors: only 10 spots, first in first served</span>
+    <h1>Get started in <span class="grad-text">15 minutes.</span></h1>
+    <p class="lede">Set up VendRoam, put your sign on the counter, and claim 3 months free. Everything on this page you can do from your phone, in your own time.</p>
+    <div class="offer">
+      <div><b>3 months free</b><span>No card needed. After that it's less than a coffee a week, or just stop. No lock in.</span></div>
+      <div><b>Your own QR sign</b><span>Print it, stick it on the counter, and customers follow you in one scan.</span></div>
+      <div><b>A say in what's next</b><span>Founding vendors tell us what to build. We actually listen.</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="gs-section">
+  <div class="container">
+    <h2>Four steps</h2>
+    <ol class="gs-steps">
+      <li class="gs-step">
+        <div class="gs-num" aria-hidden="true">1</div>
+        <div>
+          <h3>Get the app <span class="time">1 min</span></h3>
+          <p>Install VendRoam from Google Play. Open it, choose <b>I'm a vendor</b>, then <b>Set up a new vendor</b>.</p>
+          <div class="actions">
+            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.vendroam.app"><img src="assets/img/play-badge.png" alt="Get it on Google Play" style="height:52px;width:auto;"></a>
+          </div>
+        </div>
+      </li>
+      <li class="gs-step">
+        <div class="gs-num" aria-hidden="true">2</div>
+        <div>
+          <h3>Set up your business <span class="time">10 min</span></h3>
+          <p>Pick your business type and add your name, a short description and your contact details. Then:</p>
+          <ul>
+            <li><b>Save your recovery code.</b> It's shown once. It moves your business to a new phone if you ever need to.</li>
+            <li><b>Build your menu</b> in the Menu tab. Photos and prices, with categories you name yourself.</li>
+            <li><b>Add your private spots</b> in Settings, like your home or where you keep the van. You're never shown on the map inside one.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="gs-step">
+        <div class="gs-num" aria-hidden="true">3</div>
+        <div>
+          <h3>Make your counter sign <span class="time">2 min</span></h3>
+          <p>Open the <b>Barcode</b> tab and tap <b>Copy my link</b>. Paste it into the sign maker, then print. You can also share your link on Facebook and Instagram so people can follow you from there.</p>
+          <div class="actions">
+            <a class="btn" href="sign.html">Make my counter sign</a>
+          </div>
+        </div>
+      </li>
+      <li class="gs-step">
+        <div class="gs-num" aria-hidden="true">4</div>
+        <div>
+          <h3>Claim your 3 free months <span class="time">2 min</span></h3>
+          <p>Send us your VendRoam link (details below). We'll switch on your free months, usually within a day, and let you know when it's done. Then tap <b>Start Shift</b> and you're live.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="claim" id="claim">
+  <div class="container">
+    <div class="claim-box">
+      <h2>Claim your <span class="grad-text">3 free months</span></h2>
+      <p>Only 10 spots, first in first served. Once they're gone, the offer closes and new vendors get the standard 7 day free trial. In return we ask two things:</p>
+      <ul>
+        <li>Tell us honestly what works and what doesn't.</li>
+        <li>Once you've got 20 or so followers, leave a quick review or send a short video we can share.</li>
+      </ul>
+
+      <div class="email-claim">
+        <p><b>How to claim:</b></p>
+        <ol style="margin:0;padding-left:22px;color:var(--ink-dim);line-height:1.8;">
+          <li>Open the VendRoam app on your phone.</li>
+          <li>Tap <b>Barcode</b> at the bottom of the screen.</li>
+          <li>Tap <b>Copy my link</b>.</li>
+          <li>Start a new email to the address below. Paste your link into it, and type your business name <b>exactly as it is in the VendRoam app</b>, same spelling. We check the two match before switching on your free months.</li>
+          <li>Send it. That's it.</li>
+        </ol>
+        <p><code>cunningcreekstudios@protonmail.com</code></p>
+        <p>If we've already been messaging, you can paste your link in a reply to that message instead.</p>
+        <div><a class="btn btn-ghost" href="mailto:cunningcreekstudios@protonmail.com?subject=Founding%20vendor%3A%203%20months%20free">Email my link</a></div>
+      </div>
+      <p class="small">Your email and data are never sold, never used for ads, and never handed to data brokers. We're 100% committed to vendor and customer privacy. <a href="privacy.html">Privacy policy</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <span class="brand-word" style="font-size:18px;">VendRoam</span>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="delete-your-data.html">Delete your data</a>
+        <a href="mailto:cunningcreekstudios@protonmail.com">Contact</a>
+      </div>
+    </div>
+    <p class="footer-note">© 2026 Cunning Creek Studios. VendRoam and the VendRoam logo are trademarks of Cunning Creek Studios.</p>
+  </div>
+</footer>
+
+</body>
+</html>

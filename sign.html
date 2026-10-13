@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VendRoam Counter Sign</title>
+<meta name="description" content="Make a printable A4 counter sign with your own VendRoam QR code. Customers scan it once and they're following you.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0705">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700;800&family=Bebas+Neue&family=Bungee&family=Playfair+Display:wght@900&family=Abril+Fatface&family=Fredoka:wght@700&family=Pacifico&family=Permanent+Marker&family=Lobster&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+  [hidden]{display:none !important;}
+  .maker{padding:56px 0 80px;}
+  .maker-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:start;}
+  .maker h1{font-size:clamp(38px,5vw,56px);margin-bottom:14px;}
+  .fields{display:grid;gap:16px;margin-top:28px;max-width:460px;}
+  .fields label{display:grid;gap:6px;font-size:14px;font-weight:700;}
+  .fields input{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);}
+  .fields input::placeholder{color:var(--ink-dim);opacity:.7;}
+  .fields input:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+  .hint{font-size:13.5px;color:var(--ink-dim);line-height:1.5;}
+  .status{font-size:14px;font-weight:700;min-height:21px;}
+  .status.bad{color:#FF8A7A;}
+  .status.good{color:#7EE2A1;}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+  .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;}
+  .print-tips{margin-top:28px;font-size:14px;color:var(--ink-dim);line-height:1.6;max-width:460px;}
+  .print-tips b{color:var(--ink);}
+
+  /* The sign itself: A5 portrait, light paper to save ink */
+  .sheet-wrap{width:calc(210mm * .56);height:calc(297mm * .56);}
+  .sheet{
+    width:210mm;height:297mm;transform:scale(.56);transform-origin:top left;
+    background:#FFFFFF;color:#1F0F06;border-radius:6px;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.7);
+    padding:16mm 16mm 12mm;display:flex;flex-direction:column;gap:6mm;overflow:hidden;
+    font-family:'Manrope',sans-serif;
+  }
+  .sheet{--brand:#FF7A29;}
+  .s-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4mm;}
+  .s-logo{max-width:120mm;max-height:38mm;object-fit:contain;display:block;}
+  .s-logo-slot{width:80mm;height:32mm;border:2px dashed #D9C3AE;border-radius:4mm;display:grid;place-items:center;font-size:14pt;font-weight:700;color:#B49A85;}
+  .s-name{color:var(--name-color,#1F0F06);}
+  .s-name.placeholder{color:#CDB8A5;}
+  .s-name{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:76pt;line-height:.9;text-transform:uppercase;margin:0;overflow-wrap:anywhere;text-wrap:balance;max-width:100%;}
+  .s-tag{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:36pt;line-height:1;text-transform:uppercase;color:var(--brand);margin:0;}
+  .s-qr-block{display:flex;flex-direction:column;align-items:center;gap:4mm;}
+  .s-qr{width:92mm;height:92mm;border:5px solid var(--brand);border-radius:5mm;padding:3mm;background:#fff;display:grid;place-items:center;}
+  .s-qr svg{width:100%;height:100%;display:block;}
+  .s-qr .empty{font-size:10pt;color:#6B4A35;text-align:center;line-height:1.4;padding:4mm;}
+  .s-scan{font-size:22pt;font-weight:800;text-transform:uppercase;letter-spacing:.06em;}
+  .s-steps{margin:0;padding:0;list-style:none;display:flex;justify-content:center;gap:6mm;flex-wrap:nowrap;}
+  .s-steps li{display:flex;gap:2mm;align-items:center;font-size:12pt;font-weight:700;line-height:1.2;white-space:nowrap;}
+  .s-steps b{width:9mm;height:9mm;flex:none;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13pt;}
+  .s-pitch{margin:0;font-size:16pt;line-height:1.45;color:#4A3426;font-weight:600;text-align:center;}
+  .s-foot{margin-top:auto;border-top:1.5px solid #EADBCB;padding-top:4mm;text-align:center;font-size:11pt;color:#7A6152;font-weight:600;line-height:1.4;}
+  .colors{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .fonts{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;}
+  .font-opt{background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:10px 8px;cursor:pointer;font-size:16px;line-height:1.15;min-height:56px;overflow:hidden;overflow-wrap:anywhere;}
+  .font-opt:hover{border-color:var(--accent);}
+  .font-opt[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset;background:rgba(255,122,41,.1);}
+  .font-opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .swatch{width:34px;height:34px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;}
+  .swatch[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--ground) inset;}
+  .colors input[type=color]{width:44px;height:34px;padding:0;border:1px solid var(--line);border-radius:8px;background:none;cursor:pointer;}
+  .fields input[type=file]{padding:9px;font-size:14px;}
+  .link-btn{background:none;border:0;color:var(--accent-2);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;padding:0;justify-self:start;}
+
+  @media (max-width:900px){
+    .maker-grid{grid-template-columns:minmax(0,1fr);}
+    .sheet-wrap{width:calc(210mm * .42);height:calc(297mm * .42);margin:0 auto;}
+    .sheet{transform:scale(.42);}
+  }
+  @media (max-width:400px){
+    .sheet-wrap{width:calc(210mm * .4);height:calc(297mm * .4);}
+    .sheet{transform:scale(.4);}
+  }
+
+  @page{size:A4 portrait;margin:0;}
+  @media print{
+    body{background:#fff;}
+    .nav,.maker-copy,footer{display:none !important;}
+    .maker{padding:0;}
+    .maker .container{padding:0;max-width:none;}
+    .maker-grid{display:block;}
+    .sheet-wrap{width:auto;height:auto;}
+    .sheet{transform:none;box-shadow:none;border-radius:0;}
+    .s-logo-slot{display:none !important;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-row">
+    <a class="brand" href="./">
+      <span class="pin-mark">
+        <svg width="26" height="26" viewBox="0 0 34 34" fill="none">
+          <path d="M17 2C10.4 2 5 7.3 5 13.8 5 22.4 17 32 17 32s12-9.6 12-18.2C29 7.3 23.6 2 17 2Z" fill="url(#navPin)"/>
+          <circle cx="17" cy="13.5" r="4.6" fill="#101319"/>
+          <defs>
+            <linearGradient id="navPin" x1="5" y1="2" x2="29" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFB870"/>
+              <stop offset="1" stop-color="#D9711B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="brand-word">VendRoam</span>
+    </a>
+    <div class="nav-links">
+      <a href="start.html">Get started</a>
+      <a class="btn nav-cta" href="https://play.google.com/store/apps/details?id=com.vendroam.app">Get the app</a>
+    </div>
+  </div>
+</nav>
+
+<main class="maker">
+  <div class="container maker-grid">
+    <div class="maker-copy">
+      <p class="eyebrow">For vendors</p>
+      <h1>Make your <span class="grad-text">counter sign</span></h1>
+      <p class="lede">Put it on your counter or window. Customers scan it once and they're following you. Their phone pings when you're nearby.</p>
+
+      <div class="fields">
+        <label for="biz">Name of your truck, van or stall
+          <input id="biz" type="text" maxlength="40" placeholder="e.g. Bean There Coffee" autocomplete="organization">
+        </label>
+        <label for="logo">Your logo (optional)
+          <input id="logo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+        </label>
+        <button id="clearLogo" class="link-btn" type="button" hidden>Remove logo</button>
+        <p class="hint">A photo or file of your logo works. No logo? Leave it out and your name takes the top of the sign.</p>
+        <label for="link">Your VendRoam link
+          <input id="link" type="text" placeholder="https://vendroam.netlify.app/v/..." autocomplete="off" spellcheck="false">
+        </label>
+        <p class="hint">In VendRoam, open the Barcode tab and tap Copy my link, then paste it here.</p>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Font for your name</div>
+          <div class="fonts" id="fonts"></div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Name colour</div>
+          <div class="colors" data-var="--name-color" data-default="#1F0F06" data-label="name"></div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:6px;">Accent colour <span style="font-weight:500;color:var(--ink-dim);">(tagline, QR border, steps)</span></div>
+          <div class="colors" data-var="--brand" data-default="#FF7A29" data-label="accent"></div>
+        </div>
+        <p class="hint">Your logo stays on your device. Nothing you add here is uploaded.</p>
+        <div id="status" class="status" role="status"></div>
+        <div class="actions">
+          <button id="print" class="btn" type="button" disabled>Print my sign</button>
+        </div>
+      </div>
+
+      <p class="print-tips"><b>Printing:</b> the sign is A4. If your printer uses US Letter, choose "Fit to page". Turn on "Background graphics" so the colours print. A laminated sign lasts for months.</p>
+    </div>
+
+    <div class="sheet-wrap">
+      <div class="sheet" id="sheet">
+        <div class="s-top">
+          <img class="s-logo" id="logoOut" alt="" hidden>
+          <div class="s-logo-slot" id="logoSlot">Your logo here (optional)</div>
+          <h2 class="s-name placeholder" id="nameOut">Your truck or stall name</h2>
+          <p class="s-tag">Never miss us again</p>
+        </div>
+        <div class="s-qr-block">
+          <div class="s-qr" id="qr"><div class="empty">Your QR code appears here once you paste your link</div></div>
+          <div class="s-scan">Scan to follow us</div>
+        </div>
+        <ol class="s-steps">
+          <li><b>1</b><span>Scan with your camera</span></li>
+          <li><b>2</b><span>Get the free app</span></li>
+          <li><b>3</b><span>We ping you when we're near</span></li>
+        </ol>
+        <p class="s-pitch">See our menu, find us live on the map, and hear about our specials first.</p>
+        <div class="s-foot">Free app for customers: VendRoam. No account, no sign up.<br>Your location is never shown to us or anyone else.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <span class="brand-word" style="font-size:18px;">VendRoam</span>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="delete-your-data.html">Delete your data</a>
+        <a href="mailto:cunningcreekstudios@protonmail.com">Contact</a>
+      </div>
+    </div>
+    <p class="footer-note">© 2026 Cunning Creek Studios. VendRoam and the VendRoam logo are trademarks of Cunning Creek Studios.</p>
+  </div>
+</footer>
+
+<script>
+  // Same QR content as the app's printed barcode (PlayStoreLink.kt in the app), so a scan
+  // opens Google Play and follows the vendor automatically on first open.
+  var PLAY = "https://play.google.com/store/apps/details?id=com.vendroam.app&referrer=";
+
+  function vendorIdFrom(text) {
+    var t = text.trim();
+    var m = t.match(/\/v\/([A-Za-z0-9]{1,128})(?:[/?#]|$)/) || t.match(/vendor_id(?:=|%3D)([A-Za-z0-9]{1,128})/);
+    if (m) return m[1];
+    return /^[A-Za-z0-9]{8,128}$/.test(t) ? t : null;
+  }
+
+  function qrSvg(data) {
+    var qr = qrcode(0, "M");
+    qr.addData(data);
+    qr.make();
+    var n = qr.getModuleCount(), q = 2, size = n + q * 2, d = "";
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) {
+      if (qr.isDark(r, c)) d += "M" + (c + q) + " " + (r + q) + "h1v1h-1z";
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + size + " " + size + '" shape-rendering="crispEdges" role="img" aria-label="QR code to follow this vendor on VendRoam">' +
+      '<rect width="' + size + '" height="' + size + '" fill="#fff"/><path d="' + d + '" fill="#1F0F06"/></svg>';
+  }
+
+  var biz = document.getElementById("biz"), link = document.getElementById("link");
+  var statusEl = document.getElementById("status"), box = document.getElementById("qr");
+  var printBtn = document.getElementById("print"), nameOut = document.getElementById("nameOut"), sheet = document.getElementById("sheet");
+
+  function setStatus(text, kind) { statusEl.textContent = text; statusEl.className = "status" + (kind ? " " + kind : ""); }
+
+  function update() {
+    var name = biz.value.trim();
+    nameOut.textContent = name || "Your truck or stall name";
+    nameOut.classList.toggle("placeholder", !name);
+    var len = (name || "Your truck or stall name").length;
+    nameOut.dataset.base = len <= 14 ? 72 : len <= 20 ? 54 : len <= 28 ? 44 : 36;
+    fitName();
+    renderFontLabels(name);
+    printBtn.disabled = true;
+    if (!link.value.trim()) {
+      setStatus("");
+      box.innerHTML = '<div class="empty">Your QR code appears here once you paste your link</div>';
+      return;
+    }
+    var id = vendorIdFrom(link.value);
+    if (!id) {
+      setStatus("That doesn't look like a VendRoam link. Copy it again from the Barcode tab.", "bad");
+      box.innerHTML = '<div class="empty">No QR code yet</div>';
+      return;
+    }
+    if (typeof qrcode !== "function") {
+      setStatus("The QR code maker didn't load. Check your internet connection and reload the page.", "bad");
+      return;
+    }
+    box.innerHTML = qrSvg(PLAY + encodeURIComponent("vendor_id=" + id));
+    if (!name) {
+      setStatus("Add the name of your truck, van or stall to finish your sign.", "bad");
+      return;
+    }
+    setStatus("Your sign is ready. Scan it with your phone to test it before you print.", "good");
+    printBtn.disabled = false;
+  }
+
+  biz.addEventListener("input", update);
+  link.addEventListener("input", update);
+
+  var logoIn = document.getElementById("logo"), logoOut = document.getElementById("logoOut"), clearLogo = document.getElementById("clearLogo");
+  var logoSlot = document.getElementById("logoSlot");
+  logoIn.addEventListener("change", function () {
+    var file = logoIn.files && logoIn.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () { logoOut.src = reader.result; logoOut.hidden = false; logoSlot.hidden = true; clearLogo.hidden = false; };
+    reader.readAsDataURL(file);
+  });
+  clearLogo.addEventListener("click", function () { logoOut.removeAttribute("src"); logoOut.hidden = true; logoSlot.hidden = false; clearLogo.hidden = true; logoIn.value = ""; });
+
+
+  // Fonts a vendor can pick for their name. "upper" keeps block fonts in capitals; script fonts stay as typed.
+  var FONTS = [
+    { label: "Bold",       family: "'Big Shoulders Display', sans-serif", weight: 900, upper: true },
+    { label: "Tall",       family: "'Bebas Neue', sans-serif",            weight: 400, upper: true },
+    { label: "Chunky",     family: "'Bungee', sans-serif",                weight: 400, upper: true },
+    { label: "Classic",    family: "'Playfair Display', serif",           weight: 900, upper: false },
+    { label: "Fancy",      family: "'Abril Fatface', serif",              weight: 400, upper: false },
+    { label: "Rounded",    family: "'Fredoka', sans-serif",               weight: 700, upper: false },
+    { label: "Script",     family: "'Pacifico', cursive",                 weight: 400, upper: false },
+    { label: "Retro",      family: "'Lobster', cursive",                  weight: 400, upper: false },
+    { label: "Hand drawn", family: "'Permanent Marker', cursive",         weight: 400, upper: false }
+  ];
+  var fontWrap = document.getElementById("fonts"), currentFont = FONTS[0];
+
+  FONTS.forEach(function (f, i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "font-opt";
+    b.style.fontFamily = f.family;
+    b.style.fontWeight = f.weight;
+    if (f.upper) b.style.textTransform = "uppercase";
+    b.setAttribute("aria-pressed", String(i === 0));
+    b.setAttribute("aria-label", f.label + " font");
+    b.addEventListener("click", function () { setFont(f, b); });
+    fontWrap.appendChild(b);
+  });
+
+  function renderFontLabels(name) {
+    var bs = fontWrap.querySelectorAll(".font-opt");
+    FONTS.forEach(function (f, i) { bs[i].textContent = name || f.label; bs[i].title = f.label; });
+  }
+
+  function setFont(f, btn) {
+    currentFont = f;
+    fontWrap.querySelectorAll(".font-opt").forEach(function (x) { x.setAttribute("aria-pressed", String(x === btn)); });
+    nameOut.style.fontFamily = f.family;
+    nameOut.style.fontWeight = f.weight;
+    nameOut.style.textTransform = f.upper ? "uppercase" : "none";
+    nameOut.style.lineHeight = f.upper ? ".9" : "1.15";
+    var load = document.fonts && document.fonts.load ? document.fonts.load(f.weight + " 40px " + f.family) : Promise.resolve();
+    load.then(fitName, fitName);
+    fitName();
+  }
+
+  // Start from the size for the name's length, then shrink until it fits in 2 lines and the sign's width.
+  var MAX_NAME_H = 46 * 96 / 25.4; // 46mm in CSS px
+  function fitName() {
+    var size = Number(nameOut.dataset.base || 72);
+    nameOut.style.fontSize = size + "pt";
+    while (size > 22 && (nameOut.offsetHeight > MAX_NAME_H || nameOut.scrollWidth > nameOut.clientWidth + 1)) {
+      size -= 2;
+      nameOut.style.fontSize = size + "pt";
+    }
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
+
+  // One swatch row per colour setting (name, accent), each driving a CSS variable on the sign.
+  var COLORS = [
+    ["Black", "#1F0F06"], ["Orange", "#FF7A29"], ["Red", "#C81E3A"], ["Green", "#1F7A4D"],
+    ["Blue", "#1E5AA8"], ["Purple", "#6B2FA3"], ["Pink", "#D63384"], ["Brown", "#7A4A22"]
+  ];
+  document.querySelectorAll(".colors[data-var]").forEach(function (row) {
+    var cssVar = row.dataset.var, def = row.dataset.default;
+    var picker = document.createElement("input");
+    picker.type = "color";
+    picker.value = def;
+    picker.setAttribute("aria-label", "Pick any " + row.dataset.label + " colour");
+    function pick(c, btn) {
+      sheet.style.setProperty(cssVar, c);
+      row.querySelectorAll(".swatch").forEach(function (x) { x.setAttribute("aria-pressed", String(x === btn)); });
+    }
+    COLORS.forEach(function (pair) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "swatch";
+      b.style.background = pair[1];
+      if (pair[1] === "#1F0F06") b.style.borderColor = "#5a4030";
+      b.setAttribute("aria-label", pair[0] + " " + row.dataset.label);
+      b.setAttribute("aria-pressed", String(pair[1] === def));
+      b.addEventListener("click", function () { pick(pair[1], b); picker.value = pair[1]; });
+      row.appendChild(b);
+    });
+    picker.addEventListener("input", function () { pick(picker.value, null); });
+    row.appendChild(picker);
+    sheet.style.setProperty(cssVar, def);
+  });
+  printBtn.addEventListener("click", function () { window.print(); });
+  update();
+</script>
+</body>
+</html>
