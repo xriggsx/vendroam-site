@@ -111,6 +111,13 @@ h1,h2,h3{
 .nav-links a.nav-cta,.nav-links a.nav-cta:hover{color:#1A0C02;font-weight:700;}
 @media (max-width:760px){
   .nav-links a:not(.nav-cta){display:none;}
+  /* The vendor pages (Get started, Counter sign) stay reachable on phones. */
+  .nav-links{gap:14px;}
+  .nav-links a.nav-keep{display:inline;font-size:13px;color:var(--ink);}
+}
+@media (max-width:380px){
+  .nav-cta{padding:9px 13px;}
+  .brand-word{font-size:19px;}
 }
 
 /* ---- pin mark ---- */
