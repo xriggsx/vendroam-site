@@ -3,23 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VendRoam — Never lose a customer, wherever you roam</title>
-<meta name="description" content="VendRoam turns a single barcode scan into a customer for life. Live location, automatic proximity pings, and direct announcements for coffee vans, food trucks, mobile groomers, and any business that roams.">
+<title>VendRoam: your regulars get a ping when you're nearby</title>
+<meta name="description" content="VendRoam pings your regulars when your food truck, coffee cart, ice cream van or stall is nearby, and lets you message every follower in one tap. No algorithm, no commissions.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta name="theme-color" content="#0A0705">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="VendRoam — Never lose a customer, wherever you roam">
-<meta property="og:description" content="Scan once, follow for good. Live map, automatic proximity pings, and direct announcements for any mobile business.">
+<meta property="og:title" content="VendRoam: your regulars get a ping when you're nearby">
+<meta property="og:description" content="Customers scan your code once. From then on their phone pings when you're close, and one tap tells every follower where you are.">
 <meta property="og:image" content="/assets/img/icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<!-- EXPERIMENT: Tailwind CDN, scoped to the bento grid section below only. Remove before merging to main if we keep the rest of the site on the existing hand-written CSS. -->
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/css/home.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 </head>
 <body>
 
@@ -27,7 +26,7 @@
   <div class="container nav-row">
     <a class="brand" href="#top">
       <span class="pin-mark">
-        <svg width="26" height="26" viewBox="0 0 34 34" fill="none">
+        <svg width="26" height="26" viewBox="0 0 34 34" fill="none" aria-hidden="true">
           <path d="M17 2C10.4 2 5 7.3 5 13.8 5 22.4 17 32 17 32s12-9.6 12-18.2C29 7.3 23.6 2 17 2Z" fill="url(#navPin)"/>
           <circle cx="17" cy="13.5" r="4.6" fill="#101319"/>
           <defs>
@@ -41,333 +40,311 @@
       <span class="brand-word">VendRoam</span>
     </a>
     <div class="nav-links">
-      <a href="#vendors">For vendors</a>
       <a class="nav-keep" href="start.html">Get started</a>
       <a class="btn nav-cta" href="https://play.google.com/store/apps/details?id=com.vendroam.app">Get the app</a>
     </div>
   </div>
 </nav>
 
-<header id="top" class="hero">
-  <div class="marquee" aria-label="Built for coffee vans, food trucks, ice cream vans, mobile groomers, market stalls, and more">
-    <div class="marquee-track">
-      <span class="marquee-item">Coffee vans</span>
-      <span class="marquee-item">Food trucks</span>
-      <span class="marquee-item">Ice cream vans</span>
-      <span class="marquee-item">Mobile groomers</span>
-      <span class="marquee-item">Market Stall</span>
-      <span class="marquee-item">Flower stalls</span>
-      <span class="marquee-item">Mobile bars</span>
-      <span class="marquee-item">Food carts</span>
-      <span class="marquee-item">Dessert vans</span>
-      <span class="marquee-item">Mobile detailers</span>
-      <span class="marquee-item">Pop-up shops</span>
-      <span class="marquee-item">Anyone who roams</span>
-      <span class="marquee-item" aria-hidden="true">Coffee vans</span>
-      <span class="marquee-item" aria-hidden="true">Food trucks</span>
-      <span class="marquee-item" aria-hidden="true">Ice cream vans</span>
-      <span class="marquee-item" aria-hidden="true">Mobile groomers</span>
-      <span class="marquee-item" aria-hidden="true">Market Stall</span>
-      <span class="marquee-item" aria-hidden="true">Flower stalls</span>
-      <span class="marquee-item" aria-hidden="true">Mobile bars</span>
-      <span class="marquee-item" aria-hidden="true">Food carts</span>
-      <span class="marquee-item" aria-hidden="true">Dessert vans</span>
-      <span class="marquee-item" aria-hidden="true">Mobile detailers</span>
-      <span class="marquee-item" aria-hidden="true">Pop-up shops</span>
-      <span class="marquee-item" aria-hidden="true">Anyone who roams</span>
-    </div>
+<!-- Chapter bar for phones: sticky, swipe sideways, current chapter highlighted. -->
+<div class="chips" aria-label="Page sections">
+  <div class="chips-track">
+    <a href="#why" data-chapter="why">Why</a>
+    <a href="#how" data-chapter="how">How it works</a>
+    <a href="#features" data-chapter="features">Features</a>
+    <a href="#price" data-chapter="price">Price</a>
+    <a href="#privacy" data-chapter="privacy">Privacy</a>
+    <a href="#questions" data-chapter="questions">Questions</a>
+    <a href="#start" data-chapter="start">Get started</a>
   </div>
-  <div class="container hero-solo">
-    <span class="kicker-badge">🔥 7-day free trial for vendors</span>
-    <h1>The chase is over.<br>Now <span class="grad-text">they follow you.</span></h1>
-    <p class="lede" style="margin:20px auto 0;">Built for most mobile vendors — coffee vans, food trucks, mobile groomers, market stalls, and more. Roaming a route or parked in one spot, it works the same either way. One barcode scan turns a walk-up into a customer for life — no commission, no middleman, no customer list VendRoam holds over you.</p>
-    <div class="trust-row">
-      <span class="trust-chip">💯 You keep 100% — zero commission, ever</span>
-      <span class="trust-chip">🔐 Only you, the vendor, ever show on the map. Customer locations never do</span>
-      <span class="trust-chip">❌ Cancel anytime — no lock-in contract</span>
-    </div>
-  </div>
-</header>
+</div>
 
-<section id="how">
-  <div class="container">
-    <p class="eyebrow">How it works</p>
-    <h2 style="font-size:clamp(28px,3.6vw,38px);">One scan. A customer for life.</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>They scan your code</h3>
-        <p>One tap of their camera — no account, no sign-up, no app-store detour on your end. It costs you nothing to set up.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>They're yours for good</h3>
-        <p>Your live map, menu, events, and contact details stay current automatically — a following you keep, with nothing to maintain by hand.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>They get pinged, and show up</h3>
-        <p>The moment you're nearby, a notification fires on their phone automatically. Foot traffic without you lifting a finger.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="layout">
+  <!-- Chapter rail for computers: fixed on the left, a sliding marker follows the section in view. -->
+  <aside class="rail" aria-label="Page sections">
+    <ol>
+      <li><a href="#why" data-chapter="why"><span>01</span>Why</a></li>
+      <li><a href="#how" data-chapter="how"><span>02</span>How it works</a></li>
+      <li><a href="#features" data-chapter="features"><span>03</span>Features</a></li>
+      <li><a href="#price" data-chapter="price"><span>04</span>Price</a></li>
+      <li><a href="#privacy" data-chapter="privacy"><span>05</span>Privacy</a></li>
+      <li><a href="#questions" data-chapter="questions"><span>06</span>Questions</a></li>
+      <li><a href="#start" data-chapter="start"><span>07</span>Get started</a></li>
+      <li class="rail-marker" aria-hidden="true"></li>
+    </ol>
+  </aside>
 
-<section>
-  <div class="container">
-    <div class="split-head">
-      <p class="eyebrow">Why not just Facebook or Instagram?</p>
-      <h2 style="font-size:clamp(28px,3.6vw,38px);">A post is hope. A ping is certain.</h2>
-    </div>
-    <div class="split">
-      <div class="audience-card compare-bad">
-        <span class="tag">Facebook &amp; Instagram</span>
-        <h3>You post. They might see it.</h3>
-        <ul>
-          <li><span class="cross">✕</span><span>An algorithm decides who actually sees your post — most of your followers never will.</span></li>
-          <li><span class="cross">✕</span><span>You have to remember to post it, every single time you go out.</span></li>
-          <li><span class="cross">✕</span><span>Customers have to be scrolling at exactly the right moment, or they miss it.</span></li>
-          <li><span class="cross">✕</span><span>No way to know who's actually nearby you right now.</span></li>
-        </ul>
+  <main class="content">
+
+    <!-- HERO -->
+    <header id="top" class="hero2">
+      <div class="hero2-copy">
+        <p class="eyebrow">For food trucks, coffee carts, ice cream vans and market stalls</p>
+        <h1>Your regulars get a ping when <span class="grad-text">you're nearby.</span></h1>
+        <p class="lede">Customers scan your code once. From then on, their phone pings when you're close, and one tap tells every follower where you're parked. No algorithm deciding who sees it.</p>
+        <div class="hero2-ctas">
+          <a class="btn btn-lg" href="start.html">Get started: 3 months free</a>
+          <a class="play-link" href="https://play.google.com/store/apps/details?id=com.vendroam.app"><img src="assets/img/play-badge.png" alt="Get it on Google Play" width="160" height="48"></a>
+        </div>
+        <p class="hero2-small">First 10 founding vendors. No card needed. Customers always use it free.</p>
       </div>
-      <div class="audience-card compare-good">
-        <span class="tag">VendRoam</span>
-        <h3>You show up. They already know.</h3>
-        <ul>
-          <li><span class="check">✓</span><span>Every follower gets notified — no algorithm decides who sees it.</span></li>
-          <li><span class="check">✓</span><span>Nothing to remember to post — your live location updates itself the moment you're on shift.</span></li>
-          <li><span class="check">✓</span><span>A ping fires the instant someone's nearby — they don't need to be looking at their phone.</span></li>
-          <li><span class="check">✓</span><span>Built specifically for &ldquo;find me right now,&rdquo; not just general updates.</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="vendors" style="padding:96px 0;font-family:'Inter',system-ui,sans-serif;background:radial-gradient(60% 60% at 50% 0%, rgba(255,122,41,0.10), transparent 70%), #0A0705;">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="mb-12 max-w-2xl">
-      <p class="font-mono text-xs uppercase tracking-widest text-[#FFB25C] mb-3">What you get, then what they get</p>
-      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-[#FBEEDF]">Built for your business first — and customers actually want to use it.</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- Card 1: Primary Engine -->
-      <div class="md:col-span-2 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Vendor</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">📡 Automatic Proximity Pings</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">Your live map updates the instant your shift starts, so any follower who walks or drives within range gets pinged automatically — whether you're on the move or parked in your usual spot.</p>
-          </div>
-          <div class="sm:border-l sm:border-[#3a2415] sm:pl-8">
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Customer</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">📱 Zero Account Friction</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">Just scan a barcode. No app-store detour, no login, no account — ever.</p>
+      <div class="hero2-phone" aria-hidden="true">
+        <div class="phone lock">
+          <div class="lock-time">10:42</div>
+          <div class="lock-date">Saturday</div>
+          <div class="notes">
+            <div class="note n1">
+              <div class="note-head"><span class="note-app"><i class="pin-dot"></i>VendRoam</span><span>now</span></div>
+              <b>Steve's Coffee Cart is nearby!</b>
+              <p>It's within your ping radius right now.</p>
+            </div>
+            <div class="note n2">
+              <div class="note-head"><span class="note-app"><i class="pin-dot"></i>VendRoam</span><span>now</span></div>
+              <b>Steve's Coffee Cart</b>
+              <p>Parked at the Harbour Markets until 2pm. Oat lattes on special!</p>
+            </div>
           </div>
         </div>
       </div>
+    </header>
 
-      <!-- Card 2: Pricing, high-contrast accent -->
-      <div class="md:col-span-1 bg-gradient-to-br from-[#FF7A29] to-[#C2410A] border border-[#FF9B45] rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_20px_50px_-16px_rgba(255,122,41,0.7)]">
-        <p class="font-mono text-xs uppercase tracking-widest text-[#1A0C02]/70 mb-4">Pricing</p>
-        <div>
-          <p class="text-3xl md:text-4xl font-extrabold tracking-tight text-[#1A0C02] mb-3 leading-tight">Less than a coffee a week.</p>
-          <h3 class="text-lg font-bold tracking-tight text-[#1A0C02] mb-2">Pays for itself instantly</h3>
-          <p class="text-[#1A0C02]/70 text-sm leading-relaxed">Recoup your software investment with just two extra regulars visiting your truck this week. Exact price shown in Google Play for your country.</p>
-        </div>
+    <!-- 01 WHY -->
+    <section id="why" class="chapter">
+      <p class="eyebrow">01 · Why</p>
+      <h2>Your post gets buried. <span class="grad-text">Your ping doesn't.</span></h2>
+      <div class="versus reveal">
+        <div class="vs-head vs-them">Facebook &amp; Instagram</div>
+        <div class="vs-head vs-us">VendRoam</div>
+        <div class="vs-cell vs-them"><b>✕</b> The algorithm picks who sees your post</div>
+        <div class="vs-cell vs-us"><b>✓</b> Every follower's phone gets it</div>
+        <div class="vs-cell vs-them"><b>✕</b> Buried in the feed within hours</div>
+        <div class="vs-cell vs-us"><b>✓</b> Lands right when you're nearby</div>
+        <div class="vs-cell vs-them"><b>✕</b> Squeezed between ads and other vendors</div>
+        <div class="vs-cell vs-us"><b>✓</b> Just you. No ads, no competitors</div>
+        <div class="vs-cell vs-them"><b>✕</b> Growth depends on the algorithm</div>
+        <div class="vs-cell vs-us"><b>✓</b> Customers share your code, your following grows</div>
       </div>
+      <p class="aside-note">Keep posting if you like. Just stop relying on it to bring your regulars back.</p>
+    </section>
 
-      <!-- Card 3: Operations -->
-      <div class="md:col-span-2 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Vendor</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🏪 Dynamic Menu Control</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">Live price adjustments and &ldquo;Sold Out&rdquo; toggles, updated in real time.</p>
-          </div>
-          <div class="sm:border-l sm:border-[#3a2415] sm:pl-8">
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Customer</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🍔 Clear Decision Making</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">Know what's left before you wait in line — cutting queue times for everyone.</p>
-          </div>
-        </div>
-      </div>
+    <!-- 02 HOW IT WORKS: the phone stays put on computers while the steps scroll past. -->
+    <section id="how" class="chapter">
+      <p class="eyebrow">02 · How it works</p>
+      <h2>From setup to <span class="grad-text">regulars at your window.</span></h2>
 
-      <!-- Card 4: Private spots -->
-      <div class="md:col-span-1 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
-        <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Privacy</p>
-        <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🏠 Private Spots</h3>
-        <p class="text-[#C2A88F] text-sm leading-relaxed">Save your home or storage yard and you're never shown there, even mid shift. Saved on your phone only, never uploaded.</p>
-      </div>
-
-      <!-- Card 5: Viral Growth -->
-      <div class="md:col-span-2 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Vendor</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🗣️ Viral Loop Referrals</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">Turn your existing regulars into a passive marketing team.</p>
-          </div>
-          <div class="sm:border-l sm:border-[#3a2415] sm:pl-8">
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Customer</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🔗 One-Tap Share Link</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">Love a vendor? Send a friend their link in one tap. They're following too, even if they don't have the app yet.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6: De-risking -->
-      <div class="md:col-span-1 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
-        <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">De-risking</p>
-        <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🎁 Try Before Going Live</h3>
-        <p class="text-[#C2A88F] text-sm leading-relaxed">Setting up your profile, testing barcodes, and building your menu is 100% free. You only pay when you go live on a route.</p>
-      </div>
-
-      <!-- Card 7: Announcements, for fixed-spot / irregular-hours vendors -->
-      <div class="md:col-span-3 bg-[#1D140C] border border-[#3a2415] rounded-2xl p-8 transition-all duration-300 hover:border-[#FF7A29] hover:shadow-[0_20px_50px_-24px_rgba(255,122,41,0.5)]">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Vendor</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">📣 Instant Announcements</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">Parked in one spot and only open certain nights? Send a push to every follower the second you're open — no roaming required for it to matter.</p>
-          </div>
-          <div class="sm:border-l sm:border-[#3a2415] sm:pl-8">
-            <p class="font-mono text-xs uppercase tracking-widest text-[#FF7A29] mb-2">Customer</p>
-            <h3 class="text-xl font-bold tracking-tight text-[#FBEEDF] mb-2">🔔 Know the Moment They Open</h3>
-            <p class="text-[#C2A88F] text-sm leading-relaxed">No more guessing which nights the van's actually out — you're told directly, the second it happens.</p>
+      <div class="scrolly">
+        <div class="scrolly-phone" aria-hidden="true">
+          <div class="phone">
+            <img class="screen is-on" data-screen="1" src="assets/img/shots/01-vendor-setup.webp" alt="">
+            <img class="screen" data-screen="2" src="assets/img/shots/02-vendor-menu-coffee.webp" alt="" loading="lazy">
+            <div class="screen screen-sign" data-screen="3">
+              <div class="mini-sign">
+                <div class="ms-name">Steve's Coffee Cart</div>
+                <div class="ms-tag">Never miss us again</div>
+                <div class="ms-qr" id="sign-qr"></div>
+                <div class="ms-scan">Scan to follow us</div>
+              </div>
+            </div>
+            <img class="screen" data-screen="4" src="assets/img/shots/07-vendor-start-shift.webp" alt="" loading="lazy">
+            <div class="screen screen-lock" data-screen="5">
+              <div class="lock-time">10:42</div>
+              <div class="note static">
+                <div class="note-head"><span class="note-app"><i class="pin-dot"></i>VendRoam</span><span>now</span></div>
+                <b>Steve's Coffee Cart is nearby!</b>
+                <p>It's within your ping radius right now.</p>
+              </div>
+            </div>
+            <img class="screen" data-screen="6" src="assets/img/shots/09-customer-map.webp" alt="" loading="lazy">
           </div>
         </div>
+
+        <ol class="steps2">
+          <li class="step2 is-on" data-step="1">
+            <span class="step2-num">1</span>
+            <h3>Set up in about 15 minutes</h3>
+            <p>Pick your business type and add your name, description and contact details. You can build everything before you pay a cent.</p>
+            <img class="step2-shot" src="assets/img/shots/01-vendor-setup.webp" alt="VendRoam vendor setup screen" loading="lazy">
+          </li>
+          <li class="step2" data-step="2">
+            <span class="step2-num">2</span>
+            <h3>Add your menu</h3>
+            <p>Photos, prices, specials and sold out, in categories you name yourself. Change it any time, even mid shift.</p>
+            <img class="step2-shot" src="assets/img/shots/02-vendor-menu-coffee.webp" alt="A coffee menu in VendRoam" loading="lazy">
+          </li>
+          <li class="step2" data-step="3">
+            <span class="step2-num">3</span>
+            <h3>Put your code on the counter</h3>
+            <p>Customers scan your QR code once and they're following you. No account, no sign up. Make a counter sign with your name and logo in two minutes, and share your link on Facebook and Instagram too.</p>
+            <a class="text-link" href="sign.html">Make a counter sign →</a>
+          </li>
+          <li class="step2" data-step="4">
+            <span class="step2-num">4</span>
+            <h3>Tap Start Shift</h3>
+            <p>You're live. Keep VendRoam open while you work: your screen stays on, and your location is only sent while the app is open.</p>
+            <img class="step2-shot" src="assets/img/shots/07-vendor-start-shift.webp" alt="The Start Shift button in VendRoam" loading="lazy">
+          </li>
+          <li class="step2" data-step="5">
+            <span class="step2-num">5</span>
+            <h3>Your followers get pinged</h3>
+            <p>When you come within range of a follower's spot, their phone pings, even if the app is closed. Parked for the day? Tap Send Announcement and every follower knows where you are.</p>
+          </li>
+          <li class="step2" data-step="6">
+            <span class="step2-num">6</span>
+            <h3>They find you, menu already picked</h3>
+            <p>Followers see you live on the map and check your menu before they reach the window.</p>
+            <img class="step2-shot" src="assets/img/shots/09-customer-map.webp" alt="A customer's map showing a live vendor" loading="lazy">
+          </li>
+        </ol>
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
+    <!-- 03 FEATURES -->
+    <section id="features" class="chapter">
+      <p class="eyebrow">03 · Features</p>
+      <h2>Everything you need. <span class="grad-text">Nothing you don't.</span></h2>
+      <div class="cards6">
+        <article class="card6 reveal">
+          <div class="card6-icon">📍</div>
+          <h3>Proximity pings</h3>
+          <p>Followers get a ping when you come within range. You choose the range and the most pings each follower gets per shift.</p>
+        </article>
+        <article class="card6 reveal">
+          <div class="card6-icon">📣</div>
+          <h3>Announcements</h3>
+          <p>Parked up, running late or sold out? One message goes to every follower's phone straight away.</p>
+        </article>
+        <article class="card6 reveal">
+          <div class="card6-icon">🗺️</div>
+          <h3>Live map</h3>
+          <p>Followers see where you are while you're on shift, and only then. End your shift and you're off the map.</p>
+        </article>
+        <article class="card6 reveal">
+          <div class="card6-icon">📋</div>
+          <h3>Your menu</h3>
+          <p>Photos, prices, sale prices and sold out items, so customers know what you've got before they get to you.</p>
+        </article>
+        <article class="card6 reveal">
+          <div class="card6-icon">🔗</div>
+          <h3>Your code and link</h3>
+          <p>Your own QR code and follow link. Customers share them with friends, and your following grows by word of mouth.</p>
+        </article>
+        <article class="card6 reveal">
+          <div class="card6-icon">🏠</div>
+          <h3>Private spots</h3>
+          <p>Save up to 3 spots, like your home or where you keep the van. You're never shown there, even mid shift.</p>
+        </article>
+      </div>
+      <p class="aside-note">Plus your follower count on your Home screen, and a private calendar for your bookings and events.</p>
+    </section>
 
-<section id="tour">
-  <div class="container">
-    <p class="eyebrow">See it in action</p>
-    <h2 style="font-size:clamp(28px,3.6vw,38px);">From empty storefront to live in minutes — then what customers see.</h2>
-    <p style="font-size:13px;color:var(--ink-dim);margin:10px 0 0;">Shown here with a coffee van, just as an example — works the same for most mobile businesses.</p>
-    <div class="tour-slideshow" id="tour-slideshow" tabindex="0">
-      <div class="tour-stage">
-        <button class="tour-nav tour-prev" id="tour-prev" aria-label="Previous screen" type="button">&#8249;</button>
-        <div class="tour-frame">
-          <img id="tour-img" src="assets/img/tour/01-vendor-setup.png" alt="">
+    <!-- 04 PRICE -->
+    <section id="price" class="chapter">
+      <p class="eyebrow">04 · Price</p>
+      <h2>Less than a coffee <span class="grad-text">a week.</span></h2>
+      <div class="price-grid">
+        <div class="price-card reveal">
+          <h3>VendRoam for vendors</h3>
+          <ul class="ticks">
+            <li>7 day free trial</li>
+            <li>No commissions on your sales</li>
+            <li>No lock in. Cancel any time in Google Play</li>
+            <li>Build your menu and print your code before you pay anything</li>
+            <li>Always free for your customers</li>
+          </ul>
+          <p class="fine">The exact price for your country is shown in Google Play.</p>
         </div>
-        <button class="tour-nav tour-next" id="tour-next" aria-label="Next screen" type="button">&#8250;</button>
+        <div class="price-card founding reveal">
+          <span class="kicker-badge">Founding vendors: only 10 spots</span>
+          <h3>3 months free</h3>
+          <p>Be one of the first 10 vendors and get 3 months free, no card needed. In return, tell us honestly what works and what doesn't.</p>
+          <a class="btn" href="start.html">Claim a founding spot</a>
+          <p class="fine">First in, first served.</p>
+        </div>
       </div>
-      <div class="tour-meta">
-        <span class="tour-badge vendor" id="tour-badge">Vendor</span>
-        <p class="tour-caption" id="tour-caption"></p>
-        <p class="tour-counter"><span id="tour-index">1</span> / <span id="tour-total">13</span></p>
-      </div>
-      <div class="tour-dots" id="tour-dots"></div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section>
-  <div class="container" style="text-align:center;">
-    <p class="eyebrow">One app, any business</p>
-    <h2 style="font-size:clamp(26px,3.2vw,34px);">Built for anyone who roams.</h2>
-    <div class="types-row">
-      <span class="type-pill"><span class="glyph">☕</span>Coffee</span>
-      <span class="type-pill"><span class="glyph">🌮</span>Food</span>
-      <span class="type-pill"><span class="glyph">🍦</span>Ice Cream</span>
-      <span class="type-pill"><span class="glyph">🐕</span>Grooming</span>
-      <span class="type-pill"><span class="glyph">🛍️</span>Market Stall</span>
-      <span class="type-pill"><span class="glyph">⭐</span>Anything else</span>
-    </div>
-  </div>
-</section>
+    <!-- 05 PRIVACY -->
+    <section id="privacy" class="chapter">
+      <p class="eyebrow">05 · Privacy</p>
+      <h2>Straight answers, <span class="grad-text">no fine print.</span></h2>
+      <div class="priv4">
+        <div class="reveal"><b>Only you show on the map</b><span>and only while you're on shift.</span></div>
+        <div class="reveal"><b>Customer locations stay private</b><span>never shown to you or anyone else.</span></div>
+        <div class="reveal"><b>Your home stays hidden</b><span>with private spots saved on your phone only.</span></div>
+        <div class="reveal"><b>Never sold, never used for ads</b><span>and never handed to data brokers.</span></div>
+      </div>
 
-<section>
-  <div class="container">
-    <p class="eyebrow">Why vendors switch</p>
-    <h2 style="font-size:clamp(28px,3.6vw,38px);">Low risk, fast payback.</h2>
-    <div class="stat-strip">
-      <div class="stat-tile">
-        <div class="stat-num">☕ &lt; 1 coffee</div>
-        <div class="stat-label">A week. No commissions, no lock in, cancel anytime. Exact price shown in Google Play for your country.</div>
+      <div class="tabs" role="tablist" aria-label="Privacy questions">
+        <button class="tab" role="tab" id="tab-vendor" aria-controls="panel-vendor" aria-selected="true">For vendors</button>
+        <button class="tab" role="tab" id="tab-customer" aria-controls="panel-customer" aria-selected="false" tabindex="-1">For customers</button>
       </div>
-      <div class="stat-tile">
-        <div class="stat-num">7 days</div>
-        <div class="stat-label">Free trial. Set up your storefront and test it before you pay a cent.</div>
-      </div>
-      <div class="stat-tile">
-        <div class="stat-num">$0</div>
-        <div class="stat-label">Cost to build your menu, generate your barcode, and get discovered.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="privacy">
-  <div class="container">
-    <p class="eyebrow">Your privacy</p>
-    <h2 style="font-size:clamp(28px,3.6vw,38px);">Straight answers, no fine print.</h2>
-    <p class="faq-intro">People are rightly careful with new apps. Here's exactly what VendRoam does with your data, before you have to ask.</p>
-    <div class="faq-grid">
-      <div class="faq-col">
-        <h3 class="faq-side">Vendor side</h3>
-        <details class="faq-item"><summary>Will customers see where I live?</summary><p>No. You can save up to 3 private spots, like your home or where you store the van, and choose how far around each one you stay hidden (200, 400 or 800 metres). The app never shows you on the map while you're inside one, even mid shift. Your private spots are saved on your phone only and never uploaded.</p></details>
-        <details class="faq-item"><summary>What if something goes wrong?</summary><p>It's built to fail safe. If your location can't be hidden for any reason, your shift ends automatically. If the app can't read your private spots, it keeps you hidden until they're sorted. If your phone dies or the app closes mid shift, your shift ends on its own. Lose signal on your route and the app puts you back live as soon as it reconnects.</p></details>
-        <details class="faq-item"><summary>Am I being tracked all the time?</summary><p>No. You only show on the map while you're on shift. When you tap End Shift, your location is removed straight away. Leave the app in the background for 30 minutes and your shift ends by itself.</p></details>
-        <details class="faq-item"><summary>Who can see my location?</summary><p>Anyone who has your barcode or share link can follow you and see your live location while you're on shift. That's how your regulars find you, the same as anyone could spot your van on the street. There's no public directory, so nobody can browse or search for you.</p></details>
-        <details class="faq-item"><summary>Can I see who my customers are or where they live?</summary><p>No. You never see your followers' names, phones or locations. That protects them, and it means you're never holding anyone's personal details.</p></details>
-        <details class="faq-item"><summary>What do you store about me?</summary><p>Your business details, your menu, and your contact info, which is whatever you choose to enter. Your location is only stored while you're live. There's no account or password. Your phone is linked to your vendor, and a recovery code lets you move it to a new phone.</p></details>
-        <details class="faq-item"><summary>How do I pay, and do you see my card?</summary><p>Your subscription goes through Google Play. We never see your card details. No commissions, no lock in, cancel anytime.</p></details>
-        <details class="faq-item"><summary>Can I delete everything?</summary><p>Yes. Settings, Danger Zone, Delete. It removes your vendor, menu and photos for good.</p></details>
+      <div class="panel" role="tabpanel" id="panel-vendor" aria-labelledby="tab-vendor">
+        <details><summary>Will customers see where I live?</summary><p>No. You can save up to 3 private spots, like your home or where you store the van, and choose how far around each one you stay hidden (200, 400 or 800 metres). The app never shows you on the map while you're inside one, even mid shift. Your private spots are saved on your phone only and never uploaded.</p></details>
+        <details><summary>Am I being tracked all the time?</summary><p>No. You only show on the map while you're on shift, and when you tap End Shift your location is removed straight away. As a safety net, if you forget to end your shift and VendRoam stays out of sight for 30 minutes in a row, it ends for you, so you're never left showing on the map.</p></details>
+        <details><summary>What if something goes wrong?</summary><p>It's built to fail safe. If your location can't be hidden for any reason, your shift ends automatically. If the app can't read your private spots, it keeps you hidden until they're sorted. If your phone dies or the app closes mid shift, your shift ends on its own. Lose signal on your route and the app puts you back live as soon as it reconnects.</p></details>
+        <details><summary>Who can see my location?</summary><p>Anyone who has your barcode or share link can follow you and see your live location while you're on shift. That's how your regulars find you, the same as anyone could spot your van on the street. There's no public directory, so nobody can browse or search for you.</p></details>
+        <details><summary>Can I see who my customers are or where they live?</summary><p>No. You never see your followers' names, phones or locations. You only see how many followers you have. That protects them, and it means you're never holding anyone's personal details.</p></details>
+        <details><summary>What do you store about me?</summary><p>Your business details, your menu, and your contact info, which is whatever you choose to enter. Your location is only stored while you're live. There's no account or password. Your phone is linked to your vendor, and a recovery code lets you move it to a new phone.</p></details>
+        <details><summary>How do I pay, and do you see my card?</summary><p>Your subscription goes through Google Play. We never see your card details. No commissions, no lock in, cancel any time.</p></details>
+        <details><summary>Can I delete everything?</summary><p>Yes. Settings, Danger Zone, Delete. It removes your vendor, menu and photos for good.</p></details>
       </div>
-      <div class="faq-col">
-        <h3 class="faq-side">Customer side</h3>
-        <details class="faq-item"><summary>Does the vendor see my location?</summary><p>No. Your location is never shown to the vendor or anyone else. Only the vendor ever shows on the map.</p></details>
-        <details class="faq-item"><summary>Then why does the app want my location?</summary><p>To know when to ping you. The app saves your location when you follow a vendor, or when you tap "Ping me here", and only uses it to work out when that vendor is close. It doesn't follow you around in the background.</p></details>
-        <details class="faq-item"><summary>Do I need an account?</summary><p>No. No sign up, no email, no password. Just scan the vendor's barcode.</p></details>
-        <details class="faq-item"><summary>Do you sell my data or show ads?</summary><p>No. We don't sell your information or use it for advertising.</p></details>
-        <details class="faq-item"><summary>How do I stop it?</summary><p>Unfollow a vendor and your location and ping details for that vendor are deleted. To remove everything at once, go to My Vendors, Settings, Danger Zone, Delete All My Data. You can also just turn off VendRoam's notifications.</p></details>
-      </div>
-    </div>
-    <p class="faq-more">Full details in our <a href="privacy.html">privacy policy</a>.</p>
-  </div>
-</section>
 
-<section class="cta-band">
-  <div class="container">
-    <h2>Never lose a <span class="grad-text">customer</span> to bad timing again.</h2>
-    <p class="lede">Free for customers, forever. A 7-day free trial for vendors — set up your storefront before you ever pay a cent.</p>
-    <div class="hero-ctas">
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.vendroam.app">
-        <img src="assets/img/play-badge.png" alt="Get it on Google Play">
-      </a>
-      <div class="qr-frame" title="Scan to get VendRoam on Google Play">
-        <div id="cta-qr"></div>
+      <div class="panel" role="tabpanel" id="panel-customer" aria-labelledby="tab-customer" hidden>
+        <details><summary>Does the vendor see my location?</summary><p>No. Your location is never shown to the vendor or anyone else. Only the vendor ever shows on the map.</p></details>
+        <details><summary>Then why does the app want my location?</summary><p>To know when to ping you. The app saves your location when you follow a vendor, or when you tap "Ping me here", and only uses it to work out when that vendor is close. It doesn't follow you around in the background.</p></details>
+        <details><summary>Do I need an account?</summary><p>No. No sign up, no email, no password. Just scan the vendor's barcode.</p></details>
+        <details><summary>Do you sell my data or show ads?</summary><p>No. We don't sell your information or use it for advertising.</p></details>
+        <details><summary>How do I stop it?</summary><p>Unfollow a vendor and your location and ping details for that vendor are deleted. To remove everything at once, go to My Vendors, Settings, Danger Zone, Delete All My Data. You can also just turn off VendRoam's notifications.</p></details>
       </div>
-    </div>
-  </div>
-</section>
+      <p class="aside-note">Full details in our <a href="privacy.html">privacy policy</a>.</p>
+    </section>
+
+    <!-- 06 QUESTIONS -->
+    <section id="questions" class="chapter">
+      <p class="eyebrow">06 · Questions</p>
+      <h2>Good to <span class="grad-text">know.</span></h2>
+      <div class="qa">
+        <details><summary>Do my customers need to download an app?</summary><p>Yes, the free VendRoam app from Google Play. Scanning your code takes them straight there, and once it's installed they're following you automatically. They never pay, and there's no account to make.</p></details>
+        <details><summary>What about customers with iPhones?</summary><p>The iPhone app is being built now. Until it's out, customers need an Android phone to follow you.</p></details>
+        <details><summary>Do I have to keep the app open on shift?</summary><p>Yes, keep it on screen while you work. Your screen stays on by itself during a shift, so there's nothing to do, and it locks normally when you end the shift. Popping into another app, like your card reader, is fine. Your shift only ends on its own if VendRoam is out of sight for 30 minutes in a row, in case you forgot to end it. Tap Start Shift and you're live again.</p></details>
+        <details><summary>I'm parked in the same spot every week. Is it still worth it?</summary><p>Yes. Tap Send Announcement when you open and every follower knows you're there, even if you never move.</p></details>
+        <details><summary>Can new customers find me without my code?</summary><p>No, on purpose. There's no directory, so you're never listed next to competitors. New followers come from your code, your link, and customers sharing them.</p></details>
+        <details><summary>Will my followers get spammed?</summary><p>No. Pings are capped: you choose the most each follower gets per shift. Announcements only go out when you send one. And followers can unfollow or turn off notifications any time.</p></details>
+      </div>
+    </section>
+
+    <!-- 07 GET STARTED -->
+    <section id="start" class="chapter cta-final">
+      <p class="eyebrow">07 · Get started</p>
+      <h2>Never lose a regular <span class="grad-text">to bad timing again.</span></h2>
+      <p class="lede">Set up in about 15 minutes, print your counter sign, and claim 3 months free as a founding vendor.</p>
+      <div class="hero2-ctas">
+        <a class="btn btn-lg" href="start.html">Get started</a>
+        <a class="play-link" href="https://play.google.com/store/apps/details?id=com.vendroam.app"><img src="assets/img/play-badge.png" alt="Get it on Google Play" width="160" height="48"></a>
+        <div class="qr-frame" title="Scan to get VendRoam on Google Play"><div id="cta-qr"></div></div>
+      </div>
+      <div class="customer-strip">
+        <b>Customer?</b> VendRoam is free. Scan your favourite vendor's code to follow them.
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Phones: the main action stays under the thumb until the final section is on screen. -->
+<a class="sticky-cta btn" href="start.html">Get started: 3 months free</a>
 
 <footer>
   <div class="container">
     <div class="footer-row">
       <a class="brand" href="#top">
-        <span class="pin-mark">
-          <svg width="20" height="20" viewBox="0 0 34 34" fill="none">
-            <path d="M17 2C10.4 2 5 7.3 5 13.8 5 22.4 17 32 17 32s12-9.6 12-18.2C29 7.3 23.6 2 17 2Z" fill="url(#footPin)"/>
-            <circle cx="17" cy="13.5" r="4.6" fill="#101319"/>
-            <defs>
-              <linearGradient id="footPin" x1="5" y1="2" x2="29" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFB870"/>
-                <stop offset="1" stop-color="#D9711B"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </span>
         <span class="brand-word" style="font-size:18px;">VendRoam</span>
       </a>
       <div class="footer-links">
+        <a href="start.html">Get started</a>
+        <a href="sign.html">Counter sign</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms</a>
         <a href="delete-your-data.html">Delete your data</a>
@@ -379,69 +356,83 @@
 </footer>
 
 <script>
-  var playStoreUrl = "https://play.google.com/store/apps/details?id=com.vendroam.app";
-  ["cta-qr"].forEach(function(id){
-    new QRCode(document.getElementById(id), {
-      text: playStoreUrl,
-      width: 76,
-      height: 76,
-      colorDark: "#241407",
-      colorLight: "#F5E6D2",
-      correctLevel: QRCode.CorrectLevel.M
+(function () {
+  var PLAY = "https://play.google.com/store/apps/details?id=com.vendroam.app";
+
+  // QR codes (Play listing): the closing call to action and the mini counter sign in step 3.
+  window.addEventListener("load", function () {
+    if (typeof QRCode !== "function") return;
+    new QRCode(document.getElementById("cta-qr"), { text: PLAY, width: 76, height: 76, colorDark: "#241407", colorLight: "#F5E6D2", correctLevel: QRCode.CorrectLevel.M });
+    new QRCode(document.getElementById("sign-qr"), { text: PLAY, width: 96, height: 96, colorDark: "#1F0F06", colorLight: "#FFFFFF", correctLevel: QRCode.CorrectLevel.M });
+  });
+
+  // Chapter rail and phone chips: highlight the chapter in view, slide the rail marker to it.
+  var chapterLinks = document.querySelectorAll("[data-chapter]");
+  var marker = document.querySelector(".rail-marker");
+  var chipsTrack = document.querySelector(".chips-track");
+  function setChapter(id) {
+    chapterLinks.forEach(function (a) {
+      var on = a.dataset.chapter === id;
+      a.classList.toggle("is-on", on);
+      if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      if (on && a.closest(".rail") && marker) {
+        marker.style.transform = "translateY(" + a.parentElement.offsetTop + "px)";
+        marker.style.height = a.parentElement.offsetHeight + "px";
+        marker.style.opacity = "1";
+      }
+      if (on && a.closest(".chips") && chipsTrack) {
+        chipsTrack.scrollTo({ left: a.offsetLeft - 16, behavior: "smooth" });
+      }
+    });
+  }
+
+  if ("IntersectionObserver" in window) {
+    var chapters = document.querySelectorAll("section.chapter");
+    var chapterObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setChapter(e.target.id); });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    chapters.forEach(function (s) { chapterObs.observe(s); });
+
+    // How it works: the step in the middle of the screen picks the phone's screen.
+    var steps = document.querySelectorAll(".step2");
+    var screens = document.querySelectorAll(".scrolly-phone .screen");
+    var stepObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var n = e.target.dataset.step;
+        steps.forEach(function (s) { s.classList.toggle("is-on", s === e.target); });
+        screens.forEach(function (sc) { sc.classList.toggle("is-on", sc.dataset.screen === n); });
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    steps.forEach(function (s) { stepObs.observe(s); });
+
+    // Hide the phone's sticky button once the final call to action is on screen.
+    var sticky = document.querySelector(".sticky-cta");
+    var endObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { sticky.classList.toggle("is-hidden", e.isIntersecting); });
+    }, { threshold: 0.2 });
+    endObs.observe(document.getElementById("start"));
+  }
+
+  // Privacy tabs (arrow keys move between them).
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { selectTab(t); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      var next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      selectTab(next); next.focus();
     });
   });
-
-  var tourSlides = [
-    { src: "assets/img/tour/01-vendor-setup.png", badge: "Vendor", caption: "Set up your storefront — business type, map pin, contact info. Free to start." },
-    { src: "assets/img/tour/02-vendor-menu-coffee.png", badge: "Vendor", caption: "Build your full menu — photos and pricing, every category." },
-    { src: "assets/img/tour/05-vendor-menu-bakery.png", badge: "Vendor", caption: "Update it anytime — add items, change prices, mark things sold out." },
-    { src: "assets/img/tour/07-vendor-start-shift.png", badge: "Vendor", caption: "Go live in one tap. Every follower gets notified automatically." },
-    { src: "assets/img/tour/08-vendor-booking.png", badge: "Vendor", caption: "Manage private bookings and events from your calendar." },
-    { src: "assets/img/tour/09-customer-map.png", badge: "Customer", caption: "Customers see you live the moment you're on shift." },
-    { src: "assets/img/tour/10-customer-fullmenu.jpg", badge: "Customer", caption: "They browse your full menu, organized by category." },
-    { src: "assets/img/tour/11-customer-bakery-menu.jpg", badge: "Customer", caption: "Real photos and pricing before they even arrive." },
-    { src: "assets/img/tour/12-customer-item-espresso.jpg", badge: "Customer", caption: "Tap any item for the full detail — no surprises." },
-    { src: "assets/img/tour/13-customer-item-banana.jpg", badge: "Customer", caption: "Every item, priced and described clearly." }
-  ];
-  var tourIndex = 0;
-  var tourImg = document.getElementById("tour-img");
-  var tourBadge = document.getElementById("tour-badge");
-  var tourCaption = document.getElementById("tour-caption");
-  var tourIndexEl = document.getElementById("tour-index");
-  var tourDotsWrap = document.getElementById("tour-dots");
-  document.getElementById("tour-total").textContent = tourSlides.length;
-
-  tourSlides.forEach(function(s, i){
-    var dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "tour-dot" + (i === 0 ? " active" : "");
-    dot.setAttribute("aria-label", "Go to screen " + (i + 1) + " of " + tourSlides.length);
-    dot.addEventListener("click", function(){ tourIndex = i; renderTour(); });
-    tourDotsWrap.appendChild(dot);
-  });
-
-  function renderTour(){
-    var s = tourSlides[tourIndex];
-    tourImg.src = s.src;
-    tourImg.alt = s.badge + " view: " + s.caption;
-    tourBadge.textContent = s.badge;
-    tourBadge.className = "tour-badge " + s.badge.toLowerCase();
-    tourCaption.textContent = s.caption;
-    tourIndexEl.textContent = tourIndex + 1;
-    var dots = tourDotsWrap.querySelectorAll(".tour-dot");
-    dots.forEach(function(d, i){ d.classList.toggle("active", i === tourIndex); });
-  }
-  function tourGo(delta){
-    tourIndex = (tourIndex + delta + tourSlides.length) % tourSlides.length;
-    renderTour();
-  }
-  document.getElementById("tour-prev").addEventListener("click", function(){ tourGo(-1); });
-  document.getElementById("tour-next").addEventListener("click", function(){ tourGo(1); });
-  document.getElementById("tour-slideshow").addEventListener("keydown", function(e){
-    if (e.key === "ArrowLeft") tourGo(-1);
-    if (e.key === "ArrowRight") tourGo(1);
-  });
-  renderTour();
+})();
 </script>
 </body>
 </html>
