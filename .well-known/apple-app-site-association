@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["24CRPH8UK4.com.vendroam.app"],
+        "components": [
+          { "/": "/v/*", "comment": "Vendor links open the VendRoam app" }
+        ]
+      }
+    ]
+  }
+}

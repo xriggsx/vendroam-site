@@ -16,6 +16,24 @@
   to = "/wellknown/assetlinks.json"
   status = 200
 
+# iOS Universal Links: same approach as assetlinks.json above. Must be a 200 rewrite, not a
+# redirect (Apple doesn't follow redirects), and the file has no extension, so its JSON content
+# type is set explicitly below.
+[[redirects]]
+  from = "/.well-known/apple-app-site-association"
+  to = "/wellknown/apple-app-site-association"
+  status = 200
+
+[[headers]]
+  for = "/.well-known/apple-app-site-association"
+  [headers.values]
+    Content-Type = "application/json"
+
+[[headers]]
+  for = "/wellknown/apple-app-site-association"
+  [headers.values]
+    Content-Type = "application/json"
+
 [[headers]]
   for = "/assets/video/*"
   [headers.values]
