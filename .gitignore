@@ -1,2 +1,5 @@
 # Local Netlify folder
 .netlify
+
+# Local working rules for Claude Code; kept out of the repo so GitHub Pages does not serve it
+CLAUDE.md
